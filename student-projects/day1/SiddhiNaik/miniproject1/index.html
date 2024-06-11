@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniProject1</title>
+    
+    <style>
+        body{
+            text-align: center;
+        }
+        div{
+            padding: 50px;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 25px;
+        }
+        button {
+            background-color: rgb(27, 142, 209);
+            color: white;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Famous Lines by Friends Characters</h1>
+    <h3>I'll be there for you...</h3>
+    <label for="character">Choose a character:  </label> 
+    <select id ='dropdown'>
+    <option value ="Ross">Ross</option>
+    <option value="Rachel">Rachel</option>
+    <option value="Monica">Monica</option>
+    <option value="Chandler">Chandler</option>
+    <option value="Phoebe">Phoebe</option>
+    <option value="Joey">Joey</option>
+    </select>
+    <button id="submitBtn">Submit</button>
+    <div id='result'></div>   
+    <script src="script.js"></script>
+</body>
+</html>
