@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #character {
+            font-family: 'Times New Roman', Times, serif;
+            color: brown;
+        }
+        #button{
+            font-weight: 700;
+        }
+        #message{
+            color: blueviolet;
+        }
+
+    </style>
+    <h1>Character Series Simulator</h1>
+    <label for="character">Choose a character</label>
+    <select  id="character">
+        <option value="professor">Professor Moriarty</option>
+        <option value="eleven">Eleven</option>
+        <option value="white">Walter White</option>
+        <option value="Gandalf">Gandalf</option>
+        <option value="whistledown">Lady whistledown</option>
+    </select>
+    <button id="button" onclick="series()">Series Name</button>
+    <div id="task"></div>
+    <div id="message"></div>
+    <script src="script.js"></script>
+</body>
+</html>
