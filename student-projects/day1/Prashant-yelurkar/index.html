@@ -39,16 +39,23 @@
         text-align: center;
         margin-top: 20px;
       }
+      h1 {
+        text-transform: uppercase;
+        font-size: clamp(20px, 4vw, 34px);
+        color: green;
+        margin-bottom: 50px;
+      }
     </style>
   </head>
   <body>
+    <h1>Simple Calculator</h1>
     <div>
       <input type="number" id="num1" placeholder="Enter first Num" />
       <input type="number" id="num2" placeholder="Enter Second Num" />
     </div>
     <div>
-      <button onclick="add()">Add</button>
-      <button onclick="sub()">Substract</button>
+      <button onclick="add()">Addition</button>
+      <button onclick="sub()">Sunstraction</button>
       <button onclick="mul()">Multiplication</button>
       <button onclick="div()">Division</button>
     </div>
