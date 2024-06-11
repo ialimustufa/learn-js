@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider Man	 Task Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .task {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="container">
+    <h1>Spider Man Task Simulator</h1>
+    <label for="character">Choose a character:</label>
+    <select id="character">
+        <option value="peter">Spider Man</option>
+        <option value="eddie">Venom</option>
+        <option value="harry">Green Goblin</option>
+        <option value="flint">Sandman</option>
+        <option value="max">Electro</option>
+    </select>
+    <button onclick="startTask()">Start Task</button>
+    <p class="task" id="task"></p>
+</div>
+
+<script src="task1js.js"></script>
+
+
+
+<script>
+function startTask() {
+    // Get the selected value from the dropdown menu
+    const character = document.getElementById('character').value;
+    
+    // Declare a variable to hold the task
+    let task;
+
+    // Determine the task based on the selected character using a switch statement
+    switch (character) {
+        case 'peter':
+            task = "Stop all villains";
+            break;
+        case 'eddie':
+            task = "Infect the water";
+            break;
+        case 'harry':
+            task = "Destroy building";
+            break;
+        case 'flint':
+            task = "Rob the bank";
+            break;
+        case 'max':
+            task = "Destroy the transformers";
+            break;
+        default:
+            task = "Good luck!";
+    }
+
+    // Display the task by setting the innerText of the task element
+    document.getElementById('task').innerText = `Task: ${task}`;
+}
+
+</script>
+</body>
+</html>
