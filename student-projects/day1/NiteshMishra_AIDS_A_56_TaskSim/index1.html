@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Day1</title>
+    </head>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: beige;
+        }
+
+        p{
+            color:rgb(16, 14, 14);
+            font-weight: bold;
+            font-size: large;
+            font-style: inherit;
+        }span{
+            color:rgb(159, 9, 19);
+            font-style: normal;
+            font-size: medium;
+        }
+    </style>
+<body>
+    <h1>Mini Project Day 1</h1>
+    <form id="characterForm" action="">
+        <label for="movie">Choose a character:</label>
+        <select name="characters" id="charac">
+            <option value="thanos">Thanos (Infinity War)</option>
+            <option value="homelander">Homelander (The Boys)</option>
+            <option value="joker">Joker (The Dark Knight)</option>
+        </select>
+        <input type="submit" value="Submit">
+        <div id="result"></div>
+    </form>
+                
+    <script>
+        document.getElementById('characterForm').addEventListener('submit', function(event)
+ {
+    event.preventDefault();
+
+    const selectedCharacter = document.getElementById('charac').value;
+
+    //console.log('Selected character:', selectedCharacter);
+    
+    const resultDiv = document.getElementById('result');
+    
+    const answers = {
+        "thanos": "You’re strong. But I could snap my fingers and you’d all cease to exist.",
+        "homelander": "I’m the world’s greatest superhero. I can do whatever I want.",
+        "joker" : "You see, in their last moments, people show you who they really are."
+    }
+    
+    resultDiv.innerHTML = `<p>${answers[selectedCharacter]}<br><span>Get Going Now!</span></p>`;
+    
+});
+
+    </script>
+</body>
+</html>
