@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khana Khazana</title>
+<style>
+body {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+}
+button {
+    margin: 10px;
+    padding: 5px 20px;
+    font-size: 18px;
+}
+select, input, textarea {
+    padding: 5px;
+    font-size: 18px;
+    margin: 10px;
+}
+.recipeButton {
+    display: block;
+    margin: 10px auto;
+}
+.highlight {
+    color: red;
+    font-weight: bold;
+}
+#recipes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.recipeTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+.recipeTable th, .recipeTable td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+}
+.recipeTable th {
+    background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+<h1>Khanaa Khazana</h1>
+<h2>Add your recipe</h2>
+<form id="recipeForm">
+    <label for="recipeName">Recipe Name:</label><br>
+    <input type="text" id="recipeName" name="recipeName"><br>
+    <label for="ingredients">Ingredients:</label><br>
+    <textarea id="ingredients" name="ingredients"></textarea><br>
+    <label for="instructions">Instructions:</label><br>
+    <textarea id="instructions" name="instructions"></textarea><br>
+    <button type="button" onclick="addRecipe()">Add Recipe</button>
+</form>
+<div id="recipes"></div>
+<table id="recipeTable" class="recipeTable">
+    <thead>
+        <tr id="recipeHeaders"></tr>
+    </thead>
+    <tbody>
+        <tr id="recipeData"></tr>
+    </tbody>
+</table>
+<script>
+var recipes = [];
+
+function addRecipe() {
+    var recipeName = document.getElementById("recipeName").value;
+    var ingredients = document.getElementById("ingredients").value;
+    var instructions = document.getElementById("instructions").value;
+    
+    var recipe = {
+        name: recipeName,
+        ingredients: ingredients,
+        instructions: instructions
+    };
+    recipes.push(recipe);
+    updateRecipeTable();
+}
+function updateRecipeTable() {
+    var headers = document.getElementById("recipeHeaders");
+    var data = document.getElementById("recipeData");
+    
+    headers.innerHTML = ''; //to clear the past info
+    data.innerHTML = '';
+    
+    recipes.forEach(function(recipe, index) {  // to add new recipe
+        var th = document.createElement("th");
+        th.innerText = recipe.name;
+        headers.appendChild(th);
+        
+        var td = document.createElement("td");
+        td.innerHTML = "<p><strong>Ingredients:</strong><br>" + recipe.ingredients + "</p>" +
+                       "<p><strong>Instructions:</strong><br>" + recipe.instructions + "</p>";
+        data.appendChild(td);
+    });
+}
+</script>
+</body>
+</html>
