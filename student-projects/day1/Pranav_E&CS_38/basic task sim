@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-human Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #707070;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .task {
+            color: rgb(13, 13, 13);
+            font-size: 18px;
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Super-human Selection</h1>
+    <label for="character">Choose your Super-human:</label>
+    <select id="character">
+        <option value="spider-man">spider-man</option>
+        <option value="iron-man">iron-man</option>
+        <option value="Captian-america">Captian-america</option>
+        <option value="Hulk">Hulk</option>
+    </select>
+    <button onclick="startTask()">Start Task</button>
+    <p class="task" id="task"></p>
+</div>
+
+<script>
+    function startTask() {
+        const character = document.getElementById('character').value;
+        let task;
+
+        switch (character) {
+            case 'spider-man':
+                task = "Protect the city!!";
+                break; 
+            case 'iron-man':
+                task = "Create the tech.";
+                break;
+            case 'Captian-america':
+                task = "Give the correct order";
+                break;
+            case 'Hulk':
+                task = "Smash !!";
+                break;
+           
+           
+        }
+
+        document.getElementById('task').innerText = `Task: ${task}`;
+    }
+</script>
+
+</body>
+</html>
