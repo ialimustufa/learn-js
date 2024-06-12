@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Padmavati Bhojnalai</h1>
+    <h3>Add Your Recipe</h3>
+
+    <label for="">Dish</label>
+    <input type="text" id="recipenameInput">
+
+    <label for="">Ingredients Recquired (Comma Separated)</label>
+    <input type="text" id="ingredientsInput">
+    <label for="">Instructions</label>
+    <textarea name="" id="instructionsInput"></textarea>
+    <br>
+    <button id="submit">Add Your Recipe</button>
+
+    <div id="recipe_container">
+     
+        
+    </div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+
+        <button id="closeButton">Close</button>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
