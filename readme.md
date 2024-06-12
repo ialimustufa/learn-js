@@ -12,3 +12,4 @@ Follow the steps in this section to setup basic installation and IDE setup.
 
 - [Start Day 1](/Day%201/)
 - [Start Day 2](/Day%202/)
+- [Start Day 3](/Day%203/)
