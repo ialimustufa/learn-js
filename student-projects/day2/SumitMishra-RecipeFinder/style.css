@@ -1,8 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Roboto', sans-serif;
+    background-color: #FAFAFA;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,97 +10,83 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     max-width: 800px;
-    margin: 20px auto;
-    background: white;
+    background: #FFF;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .title {
     text-align: center;
-    color: #333;
-    font-size: 2em;
+    color: #5C5470;
+    font-size: 1.8em;
     margin-bottom: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 12px;
+    border: 2px solid #CCC;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 input[type="text"] {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: calc(100% - 22px);
-    }
+    background-color: #ffffff;
+    transition: border-color 0.3s ease;
+}
 
-.largeBox {
-    height: 50px;
+input[type="text"]:hover, input[type="text"]:focus {
+    border-color: #5C5470;
 }
 
 input[type="submit"] {
-    background-color: rebeccapurple;
+    background-color: #5C5470;
     color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: darkmagenta;
+    background-color: #44355B;
 }
 
-.recipeList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.recipeList, .recipeLoad {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     margin-top: 20px;
+    background: #FFF;
 }
 
 .recipeInfo {
-    color: rebeccapurple;
+    color: #5C5470;
     cursor: pointer;
     padding: 10px;
-    border: 1px solid rebeccapurple;
     border-radius: 5px;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
     transition: background-color 0.3s ease;
+    display: block;
+    margin: 10px auto;
+    width: 80%;
+    border: 2px solid #5C5470;
 }
 
 .recipeInfo:hover {
-    background-color: rebeccapurple;
+    background-color: #5C5470;
     color: white;
-}
-
-.recipeLoad {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-}
-
-.recipeLoad h3 {
-    color: rebeccapurple;
-    margin-bottom: 10px;
-}
-
-.recipeLoad p {
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

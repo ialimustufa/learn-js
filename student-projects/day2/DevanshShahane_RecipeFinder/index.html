@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Recipe Finder</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Recipe Maker</h1>
+        <form id="recipeMakerForm">
+            <label for="recipeName">Enter Recipe Name:</label>
+            <input id="recipeName" type="text" placeholder="e.g., Chocolate Cake" required><br><br>
+            
+            <label for="recipeIngredients">Enter the Ingredients (comma separated):</label>
+            <input id="recipeIngredients" type="text" placeholder="e.g., flour, sugar, eggs" required><br><br>
+
+            <label for="mealType">Select Meal Type:</label>
+            <select id="mealType" required>
+                <option value="">--Please choose an option--</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Snack">Snack</option>
+            </select><br><br>
+
+            <label for="recipeMakingSteps">Enter the Process:</label>
+            <textarea id="recipeMakingSteps" class="largeBox" placeholder="Describe the steps" required></textarea><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+        <hr>
+        <h2 class="title">Recipe List</h2>
+        <div id="recipeList" class="recipeList"></div>
+        <hr>
+        <div id="recipeLoad" class="recipeLoad"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
