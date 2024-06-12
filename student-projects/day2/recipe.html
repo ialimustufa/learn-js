@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1em;
+        }
+        #recipeList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            justify-content: center;
+            margin-bottom: 2em;
+        }
+        .recipe-card {
+            background-color: black;
+            color:white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 1em;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+        #recipeDetails {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 1em;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        #recipeDetails.hidden {
+            display: none;
+        }
+        #closeButton {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        #AddForm {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 1em;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.5em;
+            text-align: center;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button[type="submit "] {
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5em 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Recipe List</h1>
+</header>
+
+<div class="container">
+    <div id="recipeList"></div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <ul id="ingredientList"></ul>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <form id="AddForm">
+        <h2>Add New Recipe</h2>
+        <input type="text" id="recipeInput" placeholder="Recipe Name" required>
+        <input type="text" id="IngredientsDetails" placeholder="Ingredients (comma separated)" required>
+        <textarea id="instructionsInput" placeholder="Instructions" required></textarea>
+        <button type="submit">Add Recipe</button>
+    </form>
+</div>
+
+<script>
+    let recipes = [
+        {
+            name: "Pasta",
+            ingredients: ["Penne Pasta", "Tomato", "Onion", "Cheese", "Butter","Spices"],
+            instructions: "Boil Penne Pasta for 10 minutes. Cook it in a creamy tomato sauce with butter and add cheese."
+        },
+        {
+            name: "Pav Bhaji",
+            ingredients: ["Pav", "Vegetables", "Spices", "Pav Bhaji Masala","Butter"],
+            instructions: "Boil all the necessary Veggies. Add spices and Pav bhaji masala. Add butter. then Apply butter On Pav and eat it with Bhaji"
+        },
+        {
+            name: "Dosa",
+            ingredients: ["Dosa Batter", "Oil", "Spices", "Coriander","Butter"],
+            instructions: "Spread the dosa batter apply oil or butter. Spread Spices and Coriander. Once it crisps from one side. Fold it and serve"
+        },
+        {
+            name: "Fried Rice",
+            ingredients: ["Rice", "Vegetables", "Vinegar", "Chilli Sauce","Soya Sauce","Spring Onion"],
+            instructions: "Boil Rice. Add Spices. Add Vinegar and rest chinese sauces. Add Spring Oninon On top And Serve"
+        }
+    ];
+
+    const recipeList = document.getElementById("recipeList");
+    const recipeDetails = document.getElementById("recipeDetails");
+    const AddForm = document.getElementById("AddForm"); 
+    const recipeInput = document.getElementById("recipeInput");
+    const IngredientsDetails = document.getElementById("IngredientsDetails");
+    const instructionsInput = document.getElementById("instructionsInput");
+
+    function ShowDetails(recipe) {
+        document.getElementById("recipeName").textContent = recipe.name;
+        const ingredientList = document.getElementById("ingredientList");
+        ingredientList.innerHTML = ""; 
+        recipe.ingredients.forEach(ingredient => {
+            const listItem = document.createElement("li");
+            listItem.textContent = ingredient;
+            ingredientList.appendChild(listItem);
+        });
+        document.getElementById("recipeInstructions").textContent = recipe.instructions;
+        recipeDetails.classList.remove("hidden");
+    }
+
+    function CreateCard(recipe) {
+        const card = document.createElement("div");
+        card.classList.add("recipe-card");
+        card.textContent = recipe.name;
+        card.addEventListener("click", () => ShowDetails(recipe));
+        recipeList.appendChild(card);
+    }
+
+    AddForm.addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        const newRecipe = {
+            name: recipeInput.value,
+            ingredients: IngredientsDetails.value.split(",").map(item => item.trim()),
+            instructions: instructionsInput.value
+        };
+        
+        recipes.push(newRecipe); 
+        CreateCard(newRecipe); 
+        
+        recipeInput.value = "";
+        IngredientsDetails.value = "";
+        instructionsInput.value = "";
+    });
+
+    document.getElementById("closeButton").addEventListener("click", () => {
+        recipeDetails.classList.add("hidden");
+    });
+
+    recipes.forEach(CreateCard);
+
+    function loadRecipesFromLocalStorage() {
+        const storedRecipes = localStorage.getItem("recipes");
+        if (storedRecipes) {
+            recipes = JSON.parse(storedRecipes);
+        }
+    }
+
+    function saveRecipesToLocalStorage() {
+         localStorage.setItem("recipes", JSON.stringify(recipes));
+    }
+
+    window.addEventListener("beforeunload", saveRecipesToLocalStorage);
+    loadRecipesFromLocalStorage();
+</script>
+
+</body>
+</html>
