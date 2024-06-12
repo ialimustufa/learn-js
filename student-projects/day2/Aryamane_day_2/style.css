@@ -1,0 +1,38 @@
+/* Basic styling for the app */
+body {
+    font-family: sans-serif;
+    
+}
+
+#List {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+   
+}
+
+.recipe-card {
+    border: 1px solid #a23737;
+    padding: 15px;
+    cursor: pointer;
+    background-color: yellowgreen;
+    
+}
+
+#recipeDetails {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+   
+
+}
+
+.hidden {
+    display: none;
+}
+h1{
+    text-align: center;
+}
+p{
+    text-align: center;
+}
