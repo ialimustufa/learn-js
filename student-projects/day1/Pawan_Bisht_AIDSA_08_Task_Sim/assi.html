@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoons Series task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .highlight {
+            color: rgb(0, 242, 255);
+            font-weight: bold;
+        }
+
+        h1 {
+            color: rgb(0, 255, 26);
+        }
+        label{
+            color: darkblue;
+        }
+
+        button{
+            margin: 0%;
+            background-color: cyan;
+            color: black;
+        }
+
+        #character {
+            background-color: rgb(255, 81, 0);
+            color: aliceblue;
+        }
+
+        option {
+            background-color: rgba(255, 119, 0, 0.549);
+            color: aliceblue;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Web Series Simulator</h1>
+    <label for = "character" > Choose a character </label>
+    <select id="character">
+        <option value="Harshad Mehta"> Harshad Mehta (Scam 1992: The Harshad Mehta StoryZ)</option>
+        <option value="Vaibhav Pandey"> Vaibhav Pandey (Kota Factory)</option>
+        <option value="Dhananjay Rajpoot">Dhananjay Rajpoot (Asur)</option>
+        <option value="Kaleen Bhaiya">Kaleen Bhaiya (Mirzapur)</option>
+        <option value="Srikant Tiwari">Srikant Tiwari (The Family Man)</option>
+    </select>
+    <button onclick="startTask()">Start task</button>
+    <div id="task"></div>
+    <div id="message"></div>
+    <script src="assi.js"></script>
+</body>
+</html>
