@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian Cuisine Recipes</title>
+    <style>
+        /* Basic styling for the app */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1, h2 {
+            color: #d2691e;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #d2691e;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #c25718;
+        }
+
+        #recipeList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .recipe-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+
+        #recipeDetails {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flavors of India</h1>
+
+    <h2>Add Your Recipe</h2>
+    <form id="addRecipeForm">
+        <div>
+            <label for="recipeNameInput">Recipe Name:</label>
+            <input type="text" id="recipeNameInput" placeholder="Enter recipe name" required>
+        </div>
+        <div>
+            <label for="ingredientsInput">Ingredients (comma-separated):</label>
+            <input type="text" id="ingredientsInput" placeholder="e.g., Chicken, Tomato, Onion" required>
+        </div>
+        <div>
+            <label for="instructionsInput">Instructions:</label>
+            <textarea id="instructionsInput" placeholder="Enter cooking instructions" required></textarea>
+        </div>
+        <button type="submit" id="addButton">Add Recipe</button>
+    </form>
+    
+    <div id="recipeList"></div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <script src="Recipe.js"></script>
+</body>
+</html>
