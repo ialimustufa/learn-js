@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Dropdown Text Display</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+            background-color: beige;
+        }
+
+        #dropdown {
+        padding: 10px;
+        font-size: 16px;
+        }
+        button{
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #ff1e00;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+            }
+        .highlight{
+            color: red;
+            font-weight: bold;
+            }
+        button:hover {
+        background-color: #0056b3;
+    }
+        
+    </style>
+<script src="script3.js"></script>
+</head>
+<body>
+    <h1>Select the country</h1>
+    <select id="dropdown">
+        <option value="option1">Germany</option>
+        <option value="option2">India</option>
+        <option value="option3">USA</option>
+    </select>
+    <button onclick="displaySelectedText()">Display Selected Text</button>
+
+    
+    <p id="displayText">Selected Text Will Appear Here</p>
+    
+</body>
+</html>
+
+
+
