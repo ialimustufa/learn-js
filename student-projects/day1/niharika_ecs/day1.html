@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+</head>
+<body>
+
+<h2>Calculator</h2>
+<input type="number" id="num1" placeholder="Enter first number"><br><br>
+<input type="number" id="num2" placeholder="Enter second number"><br><br>
+
+<button onclick="add()">Addition (+)</button>
+<button onclick="subtract()">Subtraction (-)</button>
+<button onclick="multiply()">Multiplication (*)</button>
+<button onclick="divide()">Division (/)</button><br><br>
+
+<p id="result"></p>
+
+<script>
+    function add() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var result = num1 + num2;
+        document.getElementById("result").innerHTML = "Result: " + result;
+    }
+
+    function subtract() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var result = num1 - num2;
+        document.getElementById("result").innerHTML = "Result: " + result;
+    }
+
+    function multiply() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var result = num1 * num2;
+        document.getElementById("result").innerHTML = "Result: " + result;
+    }
+
+    function divide() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        if (num2 === 0) {
+            document.getElementById("result").innerHTML = "Cannot divide by zero";
+        } else {
+            var result = num1 / num2;
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+    }
+</script>
+
+</body>
+</html>
