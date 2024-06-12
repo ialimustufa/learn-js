@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Entry</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="color.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Food Mania!</h1>
+        <form id="recipeForm">
+            <div class="form-group">
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" name="recipeName" required>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Ingredients (separated by commas):</label>
+                <textarea id="ingredients" name="ingredients" rows="4" cols="50" required></textarea>
+            </div>
+            <button type="button" onclick="displayRecipe()">Submit</button>
+        </form>
+
+        <div id="recipeDisplay" class="hidden">
+            <h2>Recipe Details</h2>
+            <p id="recipeTitle"></p>
+            <ul id="ingredientList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function displayRecipe() {
+            // Get the values from the form
+            const recipeName = document.getElementById('recipeName').value;
+            const ingredients = document.getElementById('ingredients').value;
+
+            // Display the recipe name
+            document.getElementById('recipeTitle').innerText = recipeName;
+
+            // Clear previous ingredients
+            const ingredientList = document.getElementById('ingredientList');
+            ingredientList.innerHTML = '';
+
+            // Split the ingredients by commas and display each as a list item
+            const ingredientsArray = ingredients.split(',');
+            ingredientsArray.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient.trim();
+                ingredientList.appendChild(li);
+            });
+
+            // Show the recipe details section
+            document.getElementById('recipeDisplay').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
