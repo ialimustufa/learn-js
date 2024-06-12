@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="assignment1.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .calculator button {
+            width: 48%;
+            padding: 10px;
+            margin: 5px 1%;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        .calculator button:hover {
+            background-color: #080b0f;
+        }
+        .result {
+            margin-top: 10px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="number" id="num1" placeholder="Enter Number">
+        <input type="number" id="num2" placeholder="Enter Number">
+        <div>
+            <button onclick="calculate('+')">Add</button>
+            <button onclick="calculate('-')">Subtract</button>
+        </div>
+        <div>
+            <button onclick="calculate('*')">Multiply</button>
+            <button onclick="calculate('/')">Divide</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+</body>
+</html>

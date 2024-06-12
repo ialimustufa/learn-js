@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Series Task Simulator</title>
+</head>
+<style>
+    body {
+           font-family: 'Franklin Gothic Medium', 'Arial Narrow';
+           text-align: center;
+           margin-top: 50 px;
+       }
+
+
+       .highlight {
+           color: rgb(43, 0, 255);
+           font-weight: bold;
+       }
+</style>
+<body>
+    <h1> Website task simulator</h1>
+    <label for="character"> Choose a character </label>
+   <select id ="character">
+       <option value="" disabled selected>Choose a Character</option>
+       <option value="Harry Potter" > Harry Potter </option>
+       <option value="Abhishek" > Abhishek (Panchayat) </option>
+       <option value="John" > John (Predict) </option>
+   </select>
+   <button onclick="startTask()" >Start Task</button>
+   <div id="task"></div>
+   <div id="message"></div>
+   <script src="script1.js"></script>
+</body>
+</html>
