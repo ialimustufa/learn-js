@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Recipe Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Recipe Maker</h1>
+    <form id="recipe-form">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" required><br><br>
+        
+        <label for="ingredients">Ingredients:</label><br>
+        <textarea id="ingredients" rows="4" cols="50" required></textarea><br><br>
+        
+        <label for="instructions">Instructions:</label><br>
+        <textarea id="instructions" rows="4" cols="50" required></textarea><br><br>
+        
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <h2>Recipes</h2>
+    <ul id="recipe-list"></ul>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
