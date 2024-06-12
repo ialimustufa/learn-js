@@ -23,7 +23,7 @@ function startTask(){
     }
 
     document.getElementById("task").innerHTML = task;
-    document.getElementById("Good Luck").innerHTML = Lightspeed;
+    document.getElementById("Good Luck").innerHTML = "Lightspeed";
 
-    document.getElementById("task").classList.add("highlight");
+    document.getElementById("Good Luck").classList.add("highlight");
 }
