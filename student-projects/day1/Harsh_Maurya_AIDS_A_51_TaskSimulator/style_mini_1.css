@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    background-color: rgb(201, 201, 201);
+    font-family: serif;
+}
+
+h1 {
+    font-family: serif;
+    color: rgb(22, 68, 108);
+    text-decoration: underline;
+}
+
+button {
+    border-radius: 10px;
+    height: 30px;
+    color: rgb(221, 221, 221);
+    background-color: rgb(46, 45, 45);
+    margin-left: 10px;
+}
+
+#character {
+    color: rgb(221, 221, 221);
+    background-color: rgb(46, 45, 45);
+    border-radius: 10px;
+    height: 30px;
+    width: 180px;
+    margin-left: 10px;
+}
+
+label {
+    font-size: large;
+    font-weight: bold;
+}
+
+.highlight {
+    color: rgb(255, 3, 3);
+}
+
+.high {
+    font-family: serif;
+    font-style: italic;
+    color: rgb(63, 62, 62);
+    font-weight: bold;
+    font-size: larger;
+}
