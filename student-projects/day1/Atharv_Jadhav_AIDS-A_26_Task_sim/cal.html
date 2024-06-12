@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            background:aqua;
+            border-radius: 20%;
+            
+            
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+    <title style="color: rgb(231, 231, 231);">Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <input type="number" id="num1">
+    <input type="number" id="num2">
+    <button onclick="add()">Add</button>
+    <button onclick="subtract()">Subtract</button>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+    <h1 id="result"></h1>
+
+    <script>
+        function add() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').textContent = `Result: ${num1 + num2}`;
+        }
+
+        function subtract() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').textContent = `Result: ${num1 - num2}`;
+        }
+
+        function multiply() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').textContent = `Result: ${num1 * num2}`;
+        }
+
+        function divide() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').textContent = `Result: ${num1 / num2}`;
+        }
+    </script>
+</body>
+</html>
