@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavours of India</title>
+    <style>
+        #showRecipe {
+            width: 100%;
+            height: 150px;
+            font-size: 16px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="Flavours">
+        <h1>Flavours of India</h1>
+        <h1>Add recipe</h1>
+        <br>
+        <label for="recipeName">Recipe Name:</label>
+        <br>
+        <input type="text" id="recipeName" name="recipeName">
+        <br>
+        <label for="ingredients">Ingredients:</label>
+        <br>
+        <input type="text" id="ingredients" name="ingredients">
+        <br>
+        <label for="instructions">Instructions:</label>
+        <br>
+        <input type="text" id="instructions" name="instructions">
+        <br>
+        <button onclick="showRecipe()">Show Recipe</button>
+        <br>
+        <textarea id="showRecipe" name="showRecipe" readonly></textarea>
+    </div>
+    <script>
+        function showRecipe() {
+            var recipeName = document.getElementById('recipeName').value;
+            var ingredients = document.getElementById('ingredients').value;
+            var instructions = document.getElementById('instructions').value;
+            
+            var fullRecipe = 'Recipe Name: ' + recipeName + '\nIngredients: ' + ingredients + '\nInstructions: ' + instructions;
+            document.getElementById('showRecipe').value = fullRecipe;
+        }
+    </script>
+</body>
+</html>
