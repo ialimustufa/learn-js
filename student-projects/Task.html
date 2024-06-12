@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavors of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .recipe-list {
+            margin-top: 20px;
+        }
+        .recipe {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flavors of India</h1>
+    <h2>Add Your Recipe</h2>
+    <form id="recipe-form">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" name="recipeName" required><br><br>
+        <label for="ingredients">Ingredients (comma-separated):</label>
+        <input type="text" id="ingredients" name="ingredients" required><br><br>
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions" required></textarea><br><br>
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <div class="recipe-list" id="recipe-list"></div>
+
+    <script src="Task-2.js"></script>
+</body>
+</html>
