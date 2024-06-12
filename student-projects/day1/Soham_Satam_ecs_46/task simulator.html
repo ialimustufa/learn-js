@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .task {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Pokemon selection </h1>
+    <label for="character">Choose ur Pokemon:</label>
+    <select id="character">
+        <option value="Pikachu">Pikachu </option>
+        <option value="Charmander">Charmander</option>
+        <option value="Bulbasaur">Bulbasaur</option>
+        <option value="Ekanse">Ekanse</option>
+        <option value="Squirtle">Squirtle</option>
+    </select>
+    <button onclick="startTask()">Start Task</button>
+    <p class="task" id="task"></p>
+</div>
+
+<script>
+    function startTask() {
+        const character = document.getElementById('character').value;
+        let task;
+
+        switch (character) {
+            case 'Pikachu':
+                task = "Thunderbolt !!";
+                break;
+            case 'Charmander':
+                task = "Flamethrower !!";
+                break;
+            case 'Bulbasaur':
+                task = "Razor leaf !!";
+                break;
+            case 'Ekanse':
+                task = "Poison tail !!";
+                break;
+            case 'Squirtle':
+                task = "Water gun";
+                break;
+            default:
+                task = "Good luck!";
+        }
+
+        document.getElementById('task').innerText = `Task: ${task}`;
+    }
+</script>
+
+</body>
+</html>
