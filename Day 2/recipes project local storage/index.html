@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian Cuisine Recipes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Flavors of India</h1>
+
+    <h2>Add Your Recipe</h2>
+    <form id="addRecipeForm">
+        <div>
+            <label for="recipeNameInput">Recipe Name:</label>
+            <input type="text" id="recipeNameInput" required><br>
+        </div>
+        <div>
+            <label for="ingredientsInput">Ingredients (comma-separated):</label>
+            <input type="text" id="ingredientsInput" required><br>
+        </div>
+        <div>
+            <label for="instructionsInput">Instructions:</label>
+            <textarea id="instructionsInput" required></textarea><br>
+        </div>
+        <button type="submit" id="addButton">Add Recipe</button>
+    </form>
+    
+    <div id="recipeList"></div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
