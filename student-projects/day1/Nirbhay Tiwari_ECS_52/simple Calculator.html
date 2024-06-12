@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            border: 1px solid #333;
+            padding: 10px;
+            background-color: #ccc;
+            text-align: center;
+        }
+        .display {
+            width: 100%;
+            height: 40px;
+            background-color: #eee;
+            text-align: right;
+            padding: 5px;
+            font-size: 18px;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .button {
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="button" onclick="clearDisplay()">C</button>
+            <button class="button" onclick="appendCharacter('(')">(</button>
+            <button class="button" onclick="appendCharacter(')')">)</button>
+            <button class="button" onclick="appendCharacter('/')">/</button>
+            <button class="button" onclick="appendCharacter('7')">7</button>
+            <button class="button" onclick="appendCharacter('8')">8</button>
+            <button class="button" onclick="appendCharacter('9')">9</button>
+            <button class="button" onclick="appendCharacter('*')">*</button>
+            <button class="button" onclick="appendCharacter('4')">4</button>
+            <button class="button" onclick="appendCharacter('5')">5</button>
+            <button class="button" onclick="appendCharacter('6')">6</button>
+            <button class="button" onclick="appendCharacter('-')">-</button>
+            <button class="button" onclick="appendCharacter('1')">1</button>
+            <button class="button" onclick="appendCharacter('2')">2</button>
+            <button class="button" onclick="appendCharacter('3')">3</button>
+            <button class="button" onclick="appendCharacter('+')">+</button>
+            <button class="button" onclick="appendCharacter('0')">0</button>
+            <button class="button" onclick="appendCharacter('.')">.</button>
+            <button class="button" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById('display');
+        
+        function clearDisplay() {
+            display.textContent = '0';
+        }
+
+        function appendCharacter(char) {
+            if (display.textContent === '0') {
+                display.textContent = char;
+            } else {
+                display.textContent += char;
+            }
+        }
+
+        function calculateResult() {
+            try {
+                display.textContent = eval(display.textContent);
+            } catch {
+                display.textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
