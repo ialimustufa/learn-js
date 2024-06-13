@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Maker</title>
+    <!-- <link rel="stylesheet" href="assignment2.css"> -->
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-color: darkseagreen;
+    
+    
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 30px;
+    size: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#recipe-display {
+    margin-top: 20px;
+}
+
+.recipe {
+    background: #e9ecef;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.recipe h2 {
+    margin-top: 0;
+}
+
+.recipe p {
+    margin: 5px 0;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <img src="shef.jpg" alt="" style="align-content: center; width: 730px;">
+        <h1>Recipe Maker</h1>
+        <form id="recipe-form">
+            <label for="recipe-name">Recipe Name:</label>
+            <input type="text" id="recipe-name" required>
+
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" required></textarea>
+
+            <label for="procedure">Procedure:</label>
+            <textarea id="procedure" required></textarea>
+
+            <button type="submit">Add Recipe</button>
+        </form>
+        <div id="recipe-display"></div>
+    </div>
+
+    <!-- <script src="asign2.js"></script> -->
+     <script>
+        document.getElementById('recipe-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const recipeName = document.getElementById('recipe-name').value;
+    const ingredients = document.getElementById('ingredients').value;
+    const procedure = document.getElementById('procedure').value;
+
+    const recipeDisplay = document.getElementById('recipe-display');
+
+    const recipeDiv = document.createElement('div');
+    recipeDiv.classList.add('recipe');
+
+    const recipeTitle = document.createElement('h2');
+    recipeTitle.textContent = recipeName;
+    recipeDiv.appendChild(recipeTitle);
+
+    const recipeIngredients = document.createElement('p');
+    recipeIngredients.innerHTML = `<strong>Ingredients:</strong> ${ingredients}`;
+    recipeDiv.appendChild(recipeIngredients);
+
+    const recipeProcedure = document.createElement('p');
+    recipeProcedure.innerHTML = `<strong>Procedure:</strong> ${procedure}`;
+    recipeDiv.appendChild(recipeProcedure);
+
+    recipeDisplay.appendChild(recipeDiv);
+
+    document.getElementById('recipe-form').reset();
+});
+
+     </script>
+</body>
+</html>
