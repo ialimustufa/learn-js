@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuisine Recipes</title>
+    <link rel="stylesheet" href="myrecipt.css">
+</head>
+<body>
+    <header>
+        <h1>Flavors of India</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Add Your Recipe</h2>
+            <form id="addRecipeForm">
+                <div>
+                    <label for="recipeNameInput">Recipe Name:</label>
+                    <input type="text" id="recipeNameInput" required>
+                </div>
+                <div>
+                    <label for="ingredientsInput">Ingredients (comma-separated):</label>
+                    <input type="text" id="ingredientsInput" required>
+                </div>
+                <div>
+                    <label for="instructionsInput">Instructions:</label>
+                    <textarea id="instructionsInput" required></textarea>
+                </div>
+                <button type="submit" id="addButton">Add Recipe</button>
+            </form>
+        </section>
+
+        <section id="recipeList"></section>
+
+        <section id="recipeDetails" class="hidden">
+            <h2 id="recipeName"></h2>
+            <h3>Ingredients:</h3>
+            <ul id="ingredientList"></ul>
+            <h3>Instructions:</h3>
+            <p id="recipeInstructions"></p>
+            <button id="closeButton">Close</button>
+        </section>
+    </main>
+
+    <script src="myrecipt.js"></script>
+</body>
+</html>
