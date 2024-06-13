@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Series Task Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding-top: 50px;
+            background: linear-gradient(to bottom right, #f0f0f0, #e0e0e0);
+        }
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            display: none;
+        }
+        .input-container {
+            display: block;
+        }
+        select, button {
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .task {
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .duration {
+            font-size: 16px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .moneyHeist .task {
+            color: crimson;
+            font-family: 'Times New Roman', serif;
+        }
+        .moneyHeist .duration {
+            color: green;
+        }
+        .strangerThings .task {
+            color: purple;
+            font-family: 'Times New Roman', serif;
+        }
+        .strangerThings .duration {
+            color: peru;
+        }
+        .breakingBad .task {
+            color: teal;
+            font-family: 'Times New Roman', serif;
+        }
+        .breakingBad .duration {
+            color: blue;
+        }
+        .suits .task {
+            color: red;
+            font-family: 'Times New Roman', serif;
+        }
+        .suits .duration {
+            color: paleturquoise;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Series Task Generator</h1>
+    <div class="container input-container">
+        <select id="webSeries">
+            <option value="moneyHeist">Money Heist</option>
+            <option value="strangerThings">Stranger Things</option>
+            <option value="breakingBad">Breaking Bad</option>
+            <option value="suits">Suits</option>
+        </select>
+        <button onclick="generateTask()">Generate</button>
+    </div>
+    <div id="output" class="container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
