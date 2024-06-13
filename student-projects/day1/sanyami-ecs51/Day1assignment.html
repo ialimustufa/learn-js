@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Message Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            text-align: center;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #403d3d;
+        }
+        #myDropdown {
+            font-size: 25px;
+            border-radius: 2px;
+        }
+        button{
+            font-size: 25px;
+            border-radius: 2px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Web Series Task Simulator</h1>
+    <select id="myDropdown">
+        <option value="0">Choose a Character:</option>
+        <option value="1">Message 1</option>
+        <option value="2">Message 2</option>
+        <option value="3">Message 3</option>
+    </select>
+    <button onclick="displayMessage()">Start Task</button>
+
+    <div id="message"></div>
+
+    <script>
+        function displayMessage() {
+            const dropdown = document.getElementById('myDropdown');
+            const messageDiv = document.getElementById('message');
+            const selectedValue = dropdown.value;
+
+            let message = '';
+
+            switch (selectedValue) {
+                case '1':
+                    message = 'Message: Enter Data\n Note: Data should be neumeric or alphaneumeric';
+                    break;
+                case '2':
+                    message = 'Message: View and verify table';
+                    break;
+                case '3':
+                    message = 'Message: Show pie charts';
+                    break;
+                default:
+                    message = 'Please select a valid option from the dropdown.';
+            }
+
+            messageDiv.innerText = message;
+        }
+    </script>
+
+</body>
+</html>
