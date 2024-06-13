@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <style>
+        body{
+            text-align: center;
+            padding-top: 64px;
+        }
+        .character-image{
+            max-width: 200px;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        #label{
+            font-weight: 600;
+            font-size: large;
+        }
+        p{
+            font-weight: 700;
+            color: red;
+        }
+
+        
+    </style>
+    
+</head>
+<body>
+    <h1>Web Series Task Simulator</h1>
+    <label for="Choose a character" id="label">Choose a character : </label>
+    <select name="character" id="char">
+        <option value="Harry Potter" id="hp">Harry Potter</option>
+        <option value="ACP Pradyuman (CID)" id="cid">ACP Pradyuman (CID)</option>
+        <option value="Guddu Pandit (Mirzapur)">Guddu Pandit (Mirzapur)</option>
+        <option value="Srikant Tiwari (The Family Man)">Srikant Tiwari (The Family Man)</option>
+    </select>
+    <button onclick="changeContent()">Start Task</button>
+    <p id="change">Task will be displayed here</p>
+    
+</body>
+</html>
