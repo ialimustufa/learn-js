@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="recipe.css" />
+    <title>Recipe Maker</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Recipe Inputs -->
+      <h1 class="title">Add Your Food Recipes</h1>
+
+      <form id="recipeMakerForm">
+        <label for="recipeName">Food Name:</label>
+        <input id="recipeName" type="text" required /><br /><br />
+
+        <label for="recipeIngredients">Ingredients (comma separated):</label>
+        <input id="recipeIngredients" type="text" required /><br /><br />
+
+        <label for="recipeMakingSteps">Process:</label>
+        <input
+          id="recipeMakingSteps"
+          type="text"
+          size="42"
+          class="largeBox"
+          required
+        /><br /><br />
+        <div class="button">
+          <input type="submit" id="submit" value="Submit" />
+        </div>
+      </form>
+      <br/>
+      <hr/>
+      <br/>
+
+      <h2 class="title">List of Recipes</h2>
+      <div id="recipeList" class="recipeList">
+        <!-- Saved Recipes will go here -->
+      </div>
+      <br />
+      <hr />
+      <div class="list">
+        <div id="recipeLoad" class="recipeLoad">
+          <!-- Loading a Saved Recipe will display here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="recipe.js"></script>
+  </body>
+</html>
