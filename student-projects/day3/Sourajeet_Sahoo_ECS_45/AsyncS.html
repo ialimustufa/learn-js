@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Async JS Examples</title>
+   <style>
+       body {
+           font-family: 'Courier New', Courier, monospace;
+           margin: 20px;
+       }
+       .example {
+           margin-bottom: 20px;
+       }
+       button{
+           margin-top: 10px;
+       }
+   </style>
+</head>
+<body>
+   <h1> Asynchronous Javascript Examples</h1>
+
+
+   <div class="example">
+       <h2>Callback Example</h2>
+       <button onclick="runCallbackExample()" >Fetch Data with Callback</button>
+           <p id="callback-output"></p>
+   </div>
+
+
+   <div class="example">
+       <h2>Promise Example</h2>
+       <button onclick="runPromiseExample()" >Fetch Data with Promise</button>
+           <p id="promise-output"></p>
+   </div>
+
+
+<div class="example">
+       <h2>Async/Await Example</h2>
+       <button onclick="runAsyncAwaitExample()" >Fetch Data with Async/await</button>
+           <p id="async-output"></p>
+   </div>
+
+
+   <div class="example">
+       <h2>Fetch API with Promises</h2>
+       <button onclick="fetchWithPromises()" >Fetch Posts</button>
+           <ul id="fetch-promises-output"></ul>
+   </div>
+
+
+   <script src="APP.js" ></script>
+</body>
+</html>
