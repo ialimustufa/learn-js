@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Franchise</title>
+    <style>
+        body {
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 2.5rem;
+
+        }
+        .highlight{
+            color:crimson;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+        #message{
+            color:indianred;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        #character,button{
+            font-size: 1.2rem;
+            padding: 0.4rem;
+            margin-inline: 0.5rem;
+            text-align: center;
+            border-radius: 10px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Website Task Simulator</h1>
+    <label for="Choose a Marvel Character"></label>
+    <select name="" id="character">
+        <option value="captain">Captain America</option>
+        <option value="nickfury">Nick Fury</option>
+        <option value="thor">Thor</option>
+        <option value="loki">Loki</option>
+    </select>
+
+    <button onclick=startTask() >Start Task</button>
+    <div id="task"></div>
+    <div id="message"></div>
+</body>
+<script src="task2.js"></script>
+</html>
