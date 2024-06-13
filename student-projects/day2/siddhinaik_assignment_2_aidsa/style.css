@@ -1,0 +1,41 @@
+body {
+    font-family: sans-serif;
+    background-color: #ffffff;
+}
+
+#recipeList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    border: 5px solid #ff170f;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #f7715f;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+#recipeDetails {
+    border: 10px solid #072174;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #d9c5ffe1;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    background-color: #f32525;
+    color: white;
+}
