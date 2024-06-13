@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2 | Recipe Maker</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        padding: 20px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      h1 {
+        text-align: center;
+        margin: 40px 0;
+        text-transform: uppercase;
+      }
+      label {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        margin: 10px 0;
+      }
+      input,
+      textarea {
+        height: 50px;
+        margin: 10px 0;
+        padding-inline: 10px;
+      }
+      textarea {
+        height: 100px;
+        padding-block: 10px;
+        resize: none;
+      }
+      span {
+        font-size: 24px;
+      }
+      .button {
+        height: 40px;
+        background-color: green;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin: 10px 0;
+      }
+      h2 {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .recipeButton {
+        width: 100%;
+        height: 40px;
+        margin: 10px 0;
+        border: none;
+        cursor: pointer;
+      }
+      .recipeButton:hover {
+        background-color: lightgray;
+      }
+      .rdata {
+        background-color: bisque;
+        /* padding: 20px 0px; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .rdata p {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Enter Your Recipe Data</h1>
+    <label for="name">
+      <span>Enter Recipe Name:</span>
+      <input type="text" id="name" placeholder="Enter recipe name" />
+    </label>
+    <label for="ingredient">
+      <span>Enter Recipe Ingredients:</span>
+      <input
+        type="text"
+        id="ingredient"
+        placeholder="Enter recipe ingredients"
+      />
+    </label>
+    <label for="description">
+      <span>Enter Recipe Description:</span>
+      <textarea
+        id="description"
+        placeholder="Enter recipe description"
+      ></textarea>
+    </label>
+    <button class="button" onclick="submitRecipe()">Submit</button>
+    <h2>Recipes List</h2>
+    <div id="list"></div>
+    <div class="rdata">
+      <div>
+        <p id="rname"></p>
+        <p id="ringrident"></p>
+        <p id="rdescription"></p>
+      </div>
+    </div>
+    <script>
+      function submitRecipe() {
+        let name = document.getElementById("name").value;
+        let ingredients = document.getElementById("ingredient").value;
+        let description = document.getElementById("description").value;
+
+        let data = {
+          name: name,
+          ingredients: ingredients,
+          description: description,
+        };
+
+        const localData = localStorage.getItem("recipes");
+        let recipesList = [];
+        if (localData && data.name != "") {
+          recipesList = JSON.parse(localData);
+          recipesList.push(data);
+          const jsonArray = JSON.stringify(recipesList);
+          localStorage.setItem("recipes", jsonArray);
+        } else if (data.name) {
+          recipesList.push(data);
+          const jsonArray = JSON.stringify(recipesList);
+          localStorage.setItem("recipes", jsonArray);
+        }
+        alert("Recipies Updated Sucessfully !");
+        clearInputs();
+        displayRecipes();
+      }
+
+      function clearInputs() {
+        document.getElementById("name").value = "";
+        document.getElementById("ingredient").value = "";
+        document.getElementById("description").value = "";
+      }
+
+      function displayRecipes() {
+        const list = document.getElementById("list");
+        list.innerHTML = "";
+        let recipesList = [];
+        const recipes = localStorage.getItem("recipes");
+        if (recipes) {
+          recipesList = JSON.parse(recipes);
+        }
+
+        recipesList.forEach((element) => {
+          const button = document.createElement("button");
+          button.className = "recipeButton";
+          button.id = element.name;
+          button.textContent = element.name;
+          button.onclick = () => {
+            document.getElementById("rname").innerText =
+              "Name : " + element.name;
+            document.getElementById("ringrident").innerText =
+              "Ingridient : " + element.ingredients;
+            document.getElementById("rdescription").innerText =
+              "Description : " + element.description;
+          };
+
+          list.appendChild(button);
+        });
+      }
+
+      displayRecipes();
+    </script>
+  </body>
+</html>

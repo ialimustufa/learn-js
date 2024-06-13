@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .Task {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        
+    </style>
+    <body>
+    <div class = 'Task'>
+        <h1>Task Simulator</h1>
+        <label for = "characeter">Choose your fav Charecter:</label>
+        <select id = "characeter">
+        <option value = "Dr.Smolder">Dr.Smolder</option>
+        <option value = "Ruby RoundHouse">Ruby RoundHouse</option> 
+        <option value = "Franklin Finbar">Franklin Finbar</option> 
+        <option value = "Profesor shelly">Profesor shelly</option>     
+        </select>
+        <button onclick="ShowAbilities()">Show Abilities</button>
+        <p class = "Abilities" id ='Abilities'></p>
+
+    </div>
+    <script>
+        function ShowAbilities() {
+            const characeter = document.getElementById('characeter').value;
+            let Abilities;
+    
+            switch (characeter) {
+                case 'Dr.Smolder':
+                Abilities = "Protect the city!!";
+                    break;
+                case 'Ruby RoundHouse':
+                Abilities = "Create the tech.";
+                    break;
+                case 'Franklin Finbar':
+                Abilities = "Give the correct order";
+                    break;
+                case 'Profesor shelly':
+                Abilities = "Smash !!";
+                    break;
+               
+               
+            }
+    
+            document.getElementById('Abilities').innerText = `Abilities: ${Abilities}`;
+        }
+    </script>
+</body>
+</head>

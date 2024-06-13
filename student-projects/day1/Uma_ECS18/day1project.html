@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 1 Assignment</title>
+</head>
+<body>
+  <h1>DAY one Assignment</h1>
+  <script src="scripptt.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONEY CONVERTER</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      color:indianred
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+  
+    }
+    select, input {
+      padding: 10px;
+      font-size: 18px;
+      margin: 10px;
+    }
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>CURRENCY CONVERTER into INR</h1>
+  <h2>Choose a COUNTRY</h2>
+
+  <div>
+    <label for="country">Select:</label>
+    <select id="country">
+      <option value="country1">GERMANY</option>
+      <option value="country2">USA</option>
+      <option value="country3">JAPAN</option>
+      <option value="country4">ITALY</option>
+    </select>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" min="0" step="1" value="0">
+    <button onclick="convert()">CONVERT</button>
+  </div>
+  <button onclick="end()">DONE!!</button>
+  <h2>Exchanged Amount</h2>
+  <ul id="exchange">
+      <!-- money conversion -->
+  </ul>
+  <script>
+    
+const exchangeRates = {
+    country1: 89.50,  // Germany Euro to INR
+    country2: 83.50,  // USA USD to INR
+    country3: 0.75,   // Japan Yen to INR
+    country4: 89.50   // Italy Euro to INR
+  };
+  
+  function convert() {
+    const country = document.getElementById('country').value;
+    const amount = document.getElementById('amount').value;
+    const exchange = document.getElementById('exchange');
+  
+    if (amount <= 0) {
+      alert('Please enter amount greater than 0.');
+      return;
+    }
+  
+    const rate = exchangeRates[country];
+    const convertedAmount = amount * rate;
+    exchange.innerHTML = '';
+    const listItem = document.createElement('li');
+    listItem.textContent = `Converted Amount: ${convertedAmount.toFixed(2)} INR`;
+    exchange.appendChild(listItem);
+  }
+  function end() {
+    alert('Currency conversion is complete.');
+  }
+  </script>
+</body>
+</html>
+
+
+<!--ECS 18 UMA KANOJIA-->
