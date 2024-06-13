@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Recipes</h1>
+
+    <div> 
+        <p>You can choose from below:</p>
+    </div>
+
+    <div id="List"></div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="NewRecipe"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+<div>
+    <p>You can also add your own recipe below:</p>
+</div>
+    <h3>Add Your Recipe</h3>
+    <form id="addRecipeForm"> <div>
+        <label for="NewRecipeIn">Recipe Name:</label>
+        <input type="text" id="NewRecipeIn" required><br><br>
+    </div>
+    <div>
+        <label for="ingredientsInput">Ingredients:</label>
+        <input type="text" id="ingredientsInput" required><br><br>
+    </div>
+    <div>
+        <label for="instructionsInput">Instructions:</label><br>
+        <textarea id="instructionsInput" required></textarea><br><br>
+    </div>
+        <button type="submit" id="addButton">Add Recipe</button><br>
+    </form>
+   
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>
