@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>DOM Manipulation Example</title>
+   <style>
+       .task-item {
+           display: flex;
+           justify-content: space-between;
+           margin-bottom: 10px;
+       }
+       .edit-button, .delete-button {
+           margin-left: 10px;
+       }
+   </style>
+</head>
+<body>
+   <h1>To-Do List</h1>
+   <input type="text" id="task-input" placeholder="Enter a new task">
+   <button id="add-button" class="add-button">Add Task</button>
+   <ul id="task-list">
+       <li class="task-item">Sample Task 1
+           <button class="edit-button">Edit</button>
+           <button class="delete-button">Delete</button></li>
+       <li class="task-item">Sample Task 2
+           <button class="edit-button">Edit</button>
+           <button class="delete-button">Delete</button></li>
+   </ul>
+   <script >
+    let taskList = document.getElementById('task-list');
+let addButton = document.getElementById('add-button');
+let taskInput = document.getElementById('task-input');
+
+
+addButton.addEventListener('click', function(){
+   let taskTitle = taskInput.value;
+   addTask(taskTitle);
+   taskInput.value = "";
+});
+
+
+function addTask(title){
+   let taskItem = document.createElement('li');
+   taskItem.className = 'task-item';
+   taskItem.textContent = title;
+   taskList.appendChild(taskItem);
+
+
+   let editButton = document.createElement('button');
+   editButton.textContent = 'Edit Task';
+   editButton.className = 'edit-button';
+   editButton.addEventListener('click',function(){
+       let newTitle = prompt("Edit task:", taskItem.firstChild.textContent);
+       if (newTitle !== null && newTitle !==""){
+           taskItem.firstChild.textContent = newTitle;
+       } else {
+           alert("Input Empty or not supported");
+       }
+   });
