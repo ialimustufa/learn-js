@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Manager</title>
+    <link rel="stylesheet" href="recipe.css">
+</head>
+<body>
+
+    <h1>Recipe Manager</h1>
+
+    <div class="input-section">
+        <h2>Add Recipe</h2>
+        <label for="mealType">Meal Type</label>
+        <select id="mealType">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+        </select>
+        <label for="recipeName">Recipe Name</label>
+        <input type="text" id="recipeName" placeholder="Recipe Name">
+        <label for="instructions">Instructions</label>
+        <textarea id="instructions" placeholder="Instructions"></textarea>
+        <button onclick="addRecipe()">Add Recipe</button>
+    </div>
+
+    <div class="input-section">
+        <h2>Search Recipe</h2>
+        <input type="text" id="searchRecipeName" placeholder="Recipe Name">
+        <button onclick="searchRecipe()">Search</button>
+    </div>
+
+    <div id="recipeInstructions"></div>
+
+    <script src="recipe.js"></script>
+
+</body>
+</html>
