@@ -1,0 +1,95 @@
+/* Basic styling for the app */
+body {
+    background-image: url('g.jpeg');
+    background-size: cover;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin: 20px 0;
+    color: #281313;
+    }
+
+main {
+    width: 80%;
+    max-width: 1200px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #000000;
+}
+
+h2 {
+    color: #0f0e0e;
+}
+
+form {
+    background: rgb(248, 253, 185);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(146, 30, 30, 0.1);
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgb(9, 9, 9);
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #7bd291;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #1a9b36;
+}
+
+#recipeList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#recipeDetails {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none;
+}
