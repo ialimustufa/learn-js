@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style_mini_2.css" />
+    <title>Recipe Maker</title>
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    border: border-box;
+}
+
+body { 
+    background-color: rgb(196, 230, 248);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 50%;
+    margin: 20px auto;
+    background: rgba(25, 89, 121, 0.7);
+    padding: 20px;
+    border: 2px solid rgb(14, 69, 97);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
+}
+
+.title {
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+}
+
+label {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    background-color: #f1f1f1;
+    padding: 12px;
+    border: 1px solid rgb(14, 69, 97);
+    border-radius: 15px;
+    width: calc(100% - 20px);
+    }
+
+.largeBox {
+    height: 30px;
+}
+
+.button{
+    display: flex;
+    justify-content: end;
+}
+
+input[type="submit"] {
+    background-color: rgb(14, 69, 97);
+    color: white;
+    border: 2px solid rgb(225, 243, 252);
+    font-size: large;
+    font-weight: bold;
+    width: 20%;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;  
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(225, 243, 252);
+    color: black;
+    border: 2px solid rgb(14, 69, 97);
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+}
+
+.recipeList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 50px 20px 50px;
+}
+
+.recipeInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(225, 243, 252,0.5);
+    color: black;
+    border: 2px solid rgb(14, 69, 97);
+    border-radius: 15px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.recipeInfo:hover {
+    background-color: rgba(14, 69, 97,0.5);
+    color: white;
+    border: 2px solid rgb(225, 243, 252);
+}
+
+.recipeLoad {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.recipeLoad h3 { 
+    color: white;
+    margin-bottom: 10px;
+}
+
+.recipeLoad p {
+    background: #f1f1f1; 
+    padding: 10px; 
+    border: 1px solid rgb(8, 121, 16);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Recipe Inputs -->
+      <h1 class="title">Add Your Food Recipies</h1>
+
+      <form id="recipeMakerForm">
+        <label for="recipeName">Food Name:</label>
+        <input id="recipeName" type="text" required /><br /><br />
+
+        <label for="recipeIngredients">Ingredients (comma separated):</label>
+        <input id="recipeIngredients" type="text" required /><br /><br />
+
+        <label for="recipeMakingSteps">Process:</label>
+        <textarea
+          id="recipeMakingSteps"
+          rows="4"
+          required
+        ></textarea><br /><br />
+        <div class="button">
+          <input type="submit" id="submit" value="Submit" />
+        </div>
+      </form>
+      <br />
+      <hr />
+      <br />
+
+      <h2 class="title">List of Recipies</h2>
+      <div id="recipeList" class="recipeList">
+        <!-- Saved Recipes will go here -->
+      </div>
+      <br />
+      <hr />
+      <div class="list">
+        <div id="recipeLoad" class="recipeLoad">
+          <!-- Loading a Saved Recipe will display here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      //localStorage.clear() 
+document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById("recipeMakerForm").addEventListener('submit', function(event){
+        event.preventDefault(); 
+
+        const recipeName = document.getElementById("recipeName").value;
+ 
+        const ingredientsList = document.getElementById('recipeIngredients').value.split(',').filter(ingrd => ingrd.trim() !== "");
+      
+        const recipeProcess = document.getElementById('recipeMakingSteps').value;
+
+        let newRecipe = new DataView(recipeName, ingredientsList, recipeProcess)
+        console.log(newRecipe)
+        storeData(newRecipe);
+        displayRecipes()
+        clearForm();
+    });
+    displayRecipes();
+});
+
+const displayRecipes = () => {
+    const recipeArea = document.getElementById("recipeList");
+    let data = getData();
+    if (data) {
+        let dataParsed = JSON.parse(data);
+        let values = ``;
+        dataParsed.forEach((recipe, index) => {
+            values += <span class="recipeInfo" data-index="${index}" style="cursor: pointer; display: block; margin: 5px 0;">${recipe.recipeName}</span>;
+        });
+        recipeArea.innerHTML = values;
+ 
+        document.querySelectorAll('.recipeInfo').forEach(item => {
+            item.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                displayRecipeDetails(index);
+            });
+        });
+    } else {
+        recipeArea.innerHTML = "NO Recipes to Show";
+    }
+};
+ 
+const displayRecipeDetails = (index) => {
+    let data = getData();
+    let dataParsed = JSON.parse(data);
+    const recipe = dataParsed[index];
+
+    const recipeLoadArea = document.getElementById("recipeLoad");
+    recipeLoadArea.innerHTML = `
+        <h3>${recipe.recipeName}</h3>
+        <p><strong>Ingredients:</strong> </P>
+        <p>${recipe.recipeIngrd.join(',<br> ')}</p><br>
+        <p><strong>Process:</strong></p>
+        <p> ${recipe.recipeProcess}</p>
+    `;
+};
+ 
+function DataView(recipeName, recipeIngrd, recipeProcess) {
+    this.recipeName = recipeName;
+    this.recipeIngrd = recipeIngrd;
+    this.recipeProcess = recipeProcess;
+}
+ 
+const storeData = (newData)=>{
+    
+    let oldData = getData();
+    if (oldData){
+        let oldDataParsed = JSON.parse(oldData);
+
+        oldDataParsed.push(newData);
+        data = JSON.stringify(oldDataParsed);
+        setData(data);
+    }else{
+        let data = [];
+        data.push(newData);
+        data = JSON.stringify(data);
+        setData(data);
+    }
+};
+
+const getData= ()=>{
+    return localStorage.getItem("recipes");
+}
+const setData= (data)=>{
+    localStorage.setItem("recipes", data);
+    return true;
+}
+
+const clearForm = ()=> document.getElementById('recipeMakerForm').reset()
+    </script>
+  </body>
+</html>
