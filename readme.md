@@ -6,8 +6,13 @@ Let's learn about basics of JavaScript and React within 30 hours.
 
 Follow the steps in this section to setup basic installation and IDE setup.
 
-[Installation guide](/setup.md)
+[JS Installation guide](/setup.md)
+[React Installation guide](/react-setup.md)
 
 ## Day wise lessons and code sample
 
-- Day 1 - 
+- [Start Day 1](/Day%201/)
+- [Start Day 2](/Day%202/)
+- [Start Day 3](/Day%203/)
+- [Start Day 4](/Day%204/) 
+- [Start Day 5](/Day%205/)
