@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian Cuisine Recipes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic CSS to style the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #d2691e;
+        }
+        form div {
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        #recipeList {
+            margin-top: 20px;
+        }
+        .recipeItem {
+            cursor: pointer;
+            color: #1e90ff;
+            margin: 5px 0;
+        }
+        #recipeFinderForm {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flavors of India</h1>
+
+    <h2>Add Your Recipe</h2>
+    <form id="addRecipeForm">
+        <div>
+            <label for="recipeNameInput">Recipe Name:</label>
+            <input type="text" id="recipeNameInput" required><br>
+        </div>
+        <div>
+            <label for="ingredientsInput">Ingredients (comma-separated):</label>
+            <input type="text" id="ingredientsInput" required><br>
+        </div>
+        <div>
+            <label for="instructionsInput">Instructions:</label>
+            <textarea id="instructionsInput" required></textarea><br>
+        </div>
+        <button type="submit" id="addButton">Add Recipe</button>
+    </form>
+
+    <h2>Find a Recipe</h2>
+    <form id="recipeFinderForm">
+        <div>
+            <label for="searchInput">Search by Name:</label>
+            <input type="text" id="searchInput"><br>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="recipeList"></div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <script src="day2assignment.js"></script>
+</body>
+</html>
