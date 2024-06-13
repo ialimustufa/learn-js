@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgb(249, 247, 247);
+    padding: 20px;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: #06f566;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    
+}
+
+form {
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display:flex;
+    flex-direction: column;
+    box-shadow: inset;
+    margin-top: 50px;
+    
+   
+}
+
+label {
+    font: weight 150px;;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px);
+    }
+
+.largeBox {
+    height: 50px;
+}
+
+input[type="submit"] {
+    background-color: rgb(12, 193, 238);
+    color: rgb(14, 7, 7);
+    padding: 10px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(233, 109, 109);
+    
+}
+
+.recipeList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.recipeInfo {
+    color: rgb(77, 56, 11);
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid rebeccapurple;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.recipeInfo:hover {
+    background-color: rgb(233, 109, 109);
+    color: white;
+    background-color:  rgb(12, 193, 238);
+}
+
+.recipeLoad {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    
+}
+
+.recipeLoad h3 {
+    color: rebeccapurple;
+    margin-bottom: 10px;
+}
+
+.recipeLoad p {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
