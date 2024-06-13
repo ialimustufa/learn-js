@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe App</h1>
+        <form id="recipe-form">
+            <div>
+                <label for="recipe-name">Recipe Name:</label>
+                <input type="text" id="recipe-name" required>
+            </div>
+            <div>
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" required></textarea>
+            </div>
+            <div>
+                <label for="instructions">Instructions:</label>
+                <textarea id="instructions" required></textarea>
+            </div>
+            <button type="submit">Save Recipe</button>
+        </form>
+        <h2>Saved Recipes</h2>
+        <div id="recipes-list"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#recipes-list {
+    margin-top: 30px;
+}
+
+.recipe {
+    background-color: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe h3 {
+    margin-top: 0;
+    color: #555;
+}
+
+.recipe p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.recipe button {
+    padding: 8px;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.recipe button:hover {
+    background-color: #c82333;
+}
+</style>
+<script>document.addEventListener('DOMContentLoaded', () => {
+    const recipeForm = document.getElementById('recipe-form');
+    const recipesList = document.getElementById('recipes-list');
+
+    recipeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const recipeName = document.getElementById('recipe-name').value;
+        const ingredients = document.getElementById('ingredients').value;
+        const instructions = document.getElementById('instructions').value;
+
+        const recipe = {
+            name: recipeName,
+            ingredients: ingredients,
+            instructions: instructions
+        };
+
+        saveRecipe(recipe);
+        displayRecipes();
+        recipeForm.reset();
+    });
+
+    function saveRecipe(recipe) {
+        let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        recipes.push(recipe);
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+    }
+
+    function displayRecipes() {
+        let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        recipesList.innerHTML = '';
+        recipes.forEach((recipe, index) => {
+            const recipeDiv = document.createElement('div');
+            recipeDiv.classList.add('recipe');
+            recipeDiv.innerHTML = `
+                <h3>${recipe.name}</h3>
+                <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+                <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+                <button onclick="deleteRecipe(${index})">Delete</button>
+            `;
+            recipesList.appendChild(recipeDiv);
+        });
+    }
+
+    window.deleteRecipe = function(index) {
+        let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        recipes.splice(index, 1);
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+        displayRecipes();
+    }
+
+    displayRecipes();
+});
+</script>
