@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+        }
+        .highlight{
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: indianred;
+            font-size: 5rem;
+        }
+        #message{
+            color:coral;
+            font-size: 2rem;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>WEB SERIES SIMULATOR</h1>
+    <label for="character">Choose A Character</label>
+    <select id="character">
+        <option value="master">Master Shifu</option>
+        <option value="dragon warrior">Po</option>
+        <option value="father">Mr.Ping</option>
+        <option value="villian">Tai Lung</option>
+        <option value="grand master">Oogway</option>
+    </select>
+    <button onclick=startTask()>Role</button>
+    <div id="task"></div>
+    <div id="message"></div>
+    <script src="web.js"></script>
+</body>
+</html>
