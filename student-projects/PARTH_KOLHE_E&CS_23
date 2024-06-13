@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .recipe {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+        .recipe-details {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Recipe Book</h1>
+
+    <h2>Add New Recipe</h2>
+    <label for="recipe-name">Recipe Name:</label>
+    <input type="text" id="recipe-name"><br><br>
+    <label for="recipe-ingredients">Ingredients:</label>
+    <input type="text" id="recipe-ingredients"><br><br>
+    <label for="recipe-description">Description:</label>
+    <input type="text" id="recipe-description"><br><br>
+    <button onclick="addRecipe()">Add Recipe</button>
+
+    <h2>Recipes</h2>
+    <div id="recipe-list"></div>
+
+    <script>
+        function addRecipe() {
+            var name = document.getElementById('recipe-name').value;
+            var ingredients = document.getElementById('recipe-ingredients').value;
+            var description = document.getElementById('recipe-description').value;
+
+            if (name && ingredients && description) {
+                var recipeList = document.getElementById('recipe-list');
+
+                var recipeDiv = document.createElement('div');
+                var recipeTitle = document.createElement('div');
+                var recipeDetails = document.createElement('div');
+
+                recipeTitle.className = 'recipe';
+                recipeTitle.textContent = name;
+                recipeTitle.onclick = function() {
+                    var display = recipeDetails.style.display;
+                    recipeDetails.style.display = display === 'none' ? 'block' : 'none';
+                };
+
+                recipeDetails.className = 'recipe-details';
+                recipeDetails.innerHTML = '<strong>Ingredients:</strong> ' + ingredients + '<br>' + '<strong>Description:</strong> ' + description;
+
+                recipeDiv.appendChild(recipeTitle);
+                recipeDiv.appendChild(recipeDetails);
+                recipeList.appendChild(recipeDiv);
+
+                // Clear the input fields
+                document.getElementById('recipe-name').value = '';
+                document.getElementById('recipe-ingredients').value = '';
+                document.getElementById('recipe-description').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+
+</body>
+</html>
