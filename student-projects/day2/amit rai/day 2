@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        h1, h2 {
+            color: #4CAF50;
+        }
+        .recipe-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .recipe-button:hover {
+            background-color: #45a049;
+        }
+        .recipe-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .form-label {
+            display: block;
+            margin-top: 10px;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Recipe Book</h1>
+    
+    <h2>Add a New Recipe</h2>
+    <form id="recipeForm">
+        <label class="form-label" for="recipeName">Recipe Name:</label>
+        <input class="form-input" type="text" id="recipeName" name="recipeName" required>
+        
+        <label class="form-label" for="ingredients">Ingredients:</label>
+        <textarea class="form-textarea" id="ingredients" name="ingredients" rows="5" required></textarea>
+        
+        <label class="form-label" for="procedure">Procedure:</label>
+        <textarea class="form-textarea" id="procedure" name="procedure" rows="5" required></textarea>
+        
+        <button class="form-button" type="button" onclick="createRecipe()">Create Recipe</button>
+    </form>
+    
+    <h2>Recipes</h2>
+    <div id="recipesContainer">
+        <!-- Recipe buttons will appear here -->
+    </div>
+
+    <script>
+        function createRecipe() {
+            const recipeName = document.getElementById('recipeName').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const procedure = document.getElementById('procedure').value;
+
+            if (recipeName && ingredients && procedure) {
+                const recipeButton = document.createElement('button');
+                recipeButton.className = 'recipe-button';
+                recipeButton.innerText = recipeName;
+                recipeButton.onclick = function() {
+                    const detailsDiv = this.nextElementSibling;
+                    detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+                };
+
+                const recipeDetails = document.createElement('div');
+                recipeDetails.className = 'recipe-details';
+                recipeDetails.innerHTML = `<strong>Ingredients:</strong><br>${ingredients.replace(/\n/g, '<br>')}<br><br><strong>Procedure:</strong><br>${procedure.replace(/\n/g, '<br>')}`;
+
+                const recipesContainer = document.getElementById('recipesContainer');
+                recipesContainer.appendChild(recipeButton);
+                recipesContainer.appendChild(recipeDetails);
+
+                // Clear the form fields
+                document.getElementById('recipeForm').reset();
+            } else {
+                alert('Please fill out all fields');
+            }
+        }
+    </script>
+
+</body>
+</html>
