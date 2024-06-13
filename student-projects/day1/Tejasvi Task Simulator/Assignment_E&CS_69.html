@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Message Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            background-color: cadetblue;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        #myDropdown {
+            font-size: 25px;
+            border-radius: 2px;
+        }
+        button{
+            font-size: 25px;
+            border-radius: 2px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Web Series Task Simulator</h1>
+    <select id="myDropdown" style="border-radius: 20px; background-color: beige; text-align: center;">
+        <option value="0">Choose a Character:</option>
+        <option value="1">Task 1</option>
+        <option value="2">Task 2</option>
+        <option value="3">Task 3</option>
+    </select>
+    <button onclick="displayMessage()" style="border-radius: 20px; background-color: beige;">Start Task</button>
+
+    <div id="message"></div>
+
+    <script>
+        function displayMessage() {
+            const dropdown = document.getElementById('myDropdown');
+            const messageDiv = document.getElementById('message');
+            const selectedValue = dropdown.value;
+
+            let message = '';
+
+            switch (selectedValue) {
+                case '1':
+                    message = 'Your Task: Plan Your Day\n Best Luck!';
+                    break;
+                case '2':
+                    message = 'Your Task:Collect Data';
+                    break;
+                case '3':
+                    message = 'Your Task:Verify Data';
+                    break;
+                default:
+                    message = 'Please select a valid option from the dropdown.';
+            }
+
+            messageDiv.innerText = message;
+        }
+    </script>
+
+</body>
+</html>
