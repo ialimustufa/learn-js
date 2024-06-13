@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Food Recipy List</title>
+<link rel="stylesheet" href="to.css">
+</head>
+<body>
+<div class="container">
+    <h1>Food Recipy List</h1>
+    <div id="categories">
+        <h2>Categories</h2>
+        <select id="categorySelect" onchange="displayRecipes()">
+            <option value="All">All</option>
+        </select>
+    </div>
+    <div id="recipes">
+        <h2>Recipes</h2>
+        <ul id="recipeList"></ul>
+    </div>
+    <div id="ingredients">
+        <h2>Ingredients</h2>
+        <ul id="ingredientList"></ul>
+    </div>
+    <input type="text" id="searchInput" placeholder="Search recipes" oninput="searchRecipes()">
+    <input type="text" id="taskInput" placeholder="Search.....">
+    <button onclick="addTask()">Search</button>
+</div>
+<script src="script2.js"></script>
+</body>
+</html>
