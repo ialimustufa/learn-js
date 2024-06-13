@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror Series Task Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .task {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Horror Series Task Simulator</h1>
+    <label for="character">Choose a character:</label>
+    <select id="character">
+        <option value="eleven">Eleven (Stranger Things)</option>
+        <option value="annabelle">Annabelle (Annabelle)</option>
+        <option value="ash">Ash (Evil Dead)</option>
+        <option value="samara">Samara (The Ring)</option>
+        <option value="freddy">Freddy Krueger (Nightmare on Elm Street)</option>
+    </select>
+    <button onclick="startTask()">Start Task</button>
+    <p class="task" id="task"></p>
+</div>
+
+<script>function startTask() {
+    // Get the selected value from the dropdown menu
+    const character = document.getElementById('character').value;
+    
+    // Declare a variable to hold the task
+    let task;
+
+    // Determine the task based on the selected character using a switch statement
+    switch (character) {
+        case 'eleven':
+            task = "Close the Gate";
+            break;
+        case 'annabelle':
+            task = "Lock the Doll";
+            break;
+        case 'ash':
+            task = "Run Away!";
+            break;
+        case 'samara':
+            task = "Destroy the Tape";
+            break;
+        case 'freddy':
+            task = "Stay Awake";
+            break;
+        default:
+            task = "Good luck!";
+    }
+
+    // Display the task by setting the innerText of the task element
+    document.getElementById('task').innerText = `Task: ${task}`;
+}
+</script>
+
+</body>
+</html>
