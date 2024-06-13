@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+    <title>User Information Form</title>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <form id="userInfoForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <br>
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+        <br>
+        <label for="hobbies">Hobbies:</label>
+        <textarea id="hobbies" name="hobbies"></textarea>
+        <br>
+        <label for="achievements">Achievements:</label>
+        <textarea id="achievements" name="achievements"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="displayInfo"></div>
+    <script>
+        // script.js
+const userInfoForm = document.getElementById('userInfoForm');
+const displayInfo = document.getElementById('displayInfo');
+
+userInfoForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form values
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const age = document.getElementById('age').value;
+    const birthdate = document.getElementById('birthdate').value;
+    const hobbies = document.getElementById('hobbies').value;
+    const achievements = document.getElementById('achievements').value;
+
+    // Display collected information
+    displayInfo.innerHTML = `
+        <h2>User Information:</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone Number:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Age:</strong> ${age}</p>
+        <p><strong>Birthdate:</strong> ${birthdate}</p>
+        <p><strong>Hobbies:</strong> ${hobbies}</p>
+        <p><strong>Achievements:</strong> ${achievements}</p>
+    `;
+});
+
+    </script>
+</body>
+</html>
