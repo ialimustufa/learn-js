@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./calci.css" />
+    <script src="./calculator.js"></script>
+  </head>
+  <body>
+    <div class="calculator">
+      <h1>Calculator</h1>
+      <div class="input">
+        <input type="number" id="num1" placeholder="Enter first number" />
+        <input type="number" id="num2" placeholder="Enter second number" />
+      </div>
+      <div class="buttons">
+        <button onclick="calculate('add')">Add</button>
+        <button onclick="calculate('subtract')">Subtract</button>
+        <button onclick="calculate('multiply')">Multiply</button>
+        <button onclick="calculate('divide')">Divide</button>
+        <button onclick="calculate('modulo')">Modulo</button>
+      </div>
+      <p id="result"></p>
+    </div>
+  </body>
+</html>
