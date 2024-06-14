@@ -1,0 +1,256 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.quiz {
+  width: 90%;
+  max-width: 800px;
+  padding: 40px;
+  background-color: #333333;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #ffffff;
+}
+
+.quiz h1 {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin: 20px 0;
+}
+
+.question-text {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.answer-button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px 0;
+}
+
+.answer-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.answer-button:focus {
+  outline: none;
+}
+
+.quiz-completed {
+  margin-top: 20px;
+}
+
+.quiz-completed h2 {
+  color: #4caf50;
+  font-size: 2em;
+}
+
+.quiz-completed p {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.restart-button, .review-button {
+  background-color: #4caf50;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 12px 24px;
+  margin: 10px 5px;
+  transition: background-color 0.3s ease;
+}
+
+.restart-button:hover, .review-button:hover {
+  background-color: #45a049;
+}
+
+.quiz-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.review-section {
+  margin-top: 20px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.review-question {
+  margin-bottom: 10px;
+}
+
+.review-question p {
+  color: #fff;
+  margin: 5px 0;
+}
+
+button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.category-difficulty-selection {
+  text-align: center;
+}
+
+.category-difficulty-selection select {
+  margin: 10px;
+}
+
+.category-difficulty-selection button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+}
+
+.selection-container {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #61dafb;
+  border-radius: 10px;
+  background-color: #20232a;
+}
+
+.selection-item {
+  margin: 10px 0;
+}
+
+.selection-item label {
+  margin-right: 10px;
+}
+
+.selection-item select {
+  padding: 5px;
+}
+
+.start-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: #21a1f1;
+}
+
+.question-section {
+  margin-bottom: 20px;
+}
+
+.question-count {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-size: 28px;
+}
+
+.answer-section button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.answer-section button:hover {
+  background-color: #21a1f1;
+}
+
+.score-section {
+  font-size: 24px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navigation-buttons button[disabled] {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.navigation-buttons button:hover:not([disabled]) {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.navigation-buttons button:focus {
+  outline: none;
+}
