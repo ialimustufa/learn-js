@@ -1,0 +1,107 @@
+// HTML Code//
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Prioritizer</title>
+    <link rel="stylesheet" href="assi.css">
+</head>
+<body>
+    <h1>Task Prioritizer</h1>
+    <div class="task-form">
+        <input type="text" id="taskName" placeholder="Enter task name">
+        <select id="priority">
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+        </select>
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <ul id="taskList"></ul>
+    <script src="assi.js"></script>
+</body>
+</html>
+//CSS Code//
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #00796b;
+    margin: 20px 0;
+}
+
+.task-form {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+input, select, button {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px;
+}
+
+li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+
+li.high {
+    background-color: #df3232;
+}
+
+li.medium {
+    background-color: #ffd000;
+}
+
+li.low {
+    background-color: #20ff2b;
+}
+// Javascript//
+function addTask() {
+    const taskName = document.getElementById('taskName').value;
+    const priority = document.getElementById('priority').value;
+
+    if (taskName.trim() === '') {
+        alert('Please enter a task name.');
+        return;
+    }
+
+    const taskList = document.getElementById('taskList');
+    const taskItem = document.createElement('li');
+    taskItem.textContent = `${taskName} (Priority: ${priority.charAt(0).toUpperCase() + priority.slice(1)})`;
+    taskItem.classList.add(priority);
+    taskList.appendChild(taskItem);
+
+    document.getElementById('taskName').value = '';
+}
