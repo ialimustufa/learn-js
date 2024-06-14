@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Goyal's Project</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            color: #333;
+        }
+        #Choose {
+            font-weight: 300;
+            margin-left: 380px;
+            font-size: 24px;
+        }
+        #dropdown {
+            height: 40px;
+            width: 150px;
+            font-size: 24px;
+            padding-left: 15px;
+            margin-right: 60px;
+        }
+        #button {
+            height: 40px;
+            width: 150px;
+            font-size: 20px;
+            padding-left: 12px;
+        }
+        #image-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-left: 500px;
+        }
+        #image-container img {
+            width: 400px;
+            height: 500px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Character image viewer</h1>
+    <div id="Choose">Choose a character:
+        <select id="dropdown">
+            <option value="Hanuman">Hanuman</option>
+            <option value="Superman">Superman</option>
+            <option value="X-man">X-man</option>
+            <option value="Robin">Robin</option>
+            <option value="Batman">Batman</option>
+            <option value="Spiderman">Spiderman</option>
+            <option value="Krrish">Krrish</option>
+            <option value="Flash">Flash</option>
+        </select>
+        <button id="button">Click to show</button>
+    </div>
+    <div id="image-container">
+        <img id="Hanuman" src="images/Hanuman.jpg" alt="Hanuman">
+        <img id="Superman" src="images/Superman.jpeg" alt="Superman">
+        <img id="X-man" src="images/X-man.jpeg" alt="X-man">
+        <img id="Robin" src="images/Robin.jpeg" alt="Robin">
+        <img id="Batman" src="images/Batman.jpeg" alt="Batman">
+        <img id="Spiderman" src="images/Spiderman.jpeg" alt="Spiderman">
+        <img id="Krrish" src="images/Krrish.jpg" alt="Krrish">
+        <img id="Flash" src="images/Flash.jpeg" alt="Flash">
+    </div>
+    <script>
+        document.getElementById('button').addEventListener('click', function() {
+            var dropdown = document.getElementById('dropdown');
+            var selectedValue = dropdown.value;
+            var images = document.querySelectorAll('#image-container img');
+
+            images.forEach(function(img) {
+                img.style.display = 'none';
+            });
+
+            var selectedImage = document.getElementById(selectedValue);
+            if (selectedImage) {
+                selectedImage.style.display = 'block';
+            } else {
+                alert('No image found');
+            }
+        });
+    </script>
+</body>
+</html>
