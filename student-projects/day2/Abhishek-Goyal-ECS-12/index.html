@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipe List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 2px solid #f4f4f9;
+            padding-bottom: 10px;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input:focus, textarea:focus, button:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            cursor: pointer;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        li:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        #ingredient-display, #instruction-display {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        #ingredient-display {
+            color: #28a745;
+            border-left: 5px solid #28a745;
+        }
+
+        #instruction-display {
+            color: #dc3545;
+            border-left: 5px solid #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe List</h1>
+        <div class="input-section">
+            <input type="text" id="recipe-name" placeholder="Recipe Name">
+            <input type="text" id="ingredients" placeholder="Ingredients (comma separated)">
+            <textarea id="instructions" placeholder="Instructions" rows="4"></textarea>
+            <button id="add-recipe-button">Add Recipe</button>
+        </div>
+        <ul id="recipe-list"></ul>
+        <div id="ingredient-display"></div>
+        <div id="instruction-display"></div>
+    </div>
+    <script>
+        document.getElementById('add-recipe-button').addEventListener('click', function() {
+            const recipeName = document.getElementById('recipe-name').value.trim();
+            const ingredients = document.getElementById('ingredients').value.split(',').map(ing => ing.trim()).filter(ing => ing);
+            const instructions = document.getElementById('instructions').value.trim();
+
+            if (recipeName && ingredients.length > 0 && instructions) {
+                addRecipe(recipeName, ingredients, instructions);
+                document.getElementById('recipe-name').value = '';
+                document.getElementById('ingredients').value = '';
+                document.getElementById('instructions').value = '';
+            } else {
+                alert('Please enter a recipe name, at least one ingredient, and instructions.');
+            }
+        });
+
+        const recipes = {};
+
+        function addRecipe(recipeName, ingredients, instructions) {
+            recipes[recipeName] = { ingredients, instructions };
+            updateRecipeList();
+        }
+
+        function updateRecipeList() {
+            const recipeList = document.getElementById('recipe-list');
+            recipeList.innerHTML = '';
+
+            for (const recipe in recipes) {
+                const li = document.createElement('li');
+                li.textContent = recipe;
+                li.addEventListener('click', function() {
+                    displayRecipeDetails(recipe);
+                });
+                recipeList.appendChild(li);
+            }
+        }
+
+        function displayRecipeDetails(recipeName) {
+            const ingredientDisplay = document.getElementById('ingredient-display');
+            const instructionDisplay = document.getElementById('instruction-display');
+            ingredientDisplay.textContent = `Ingredients: ${recipes[recipeName].ingredients.join(', ')}`;
+            instructionDisplay.textContent = `Instructions: ${recipes[recipeName].instructions}`;
+        }
+    </script>
+</body>
+</html>

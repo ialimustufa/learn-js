@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Series Task Generator</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+        }
+        .task {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .duration {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .threeIdiots .task {
+            color: crimson;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .threeIdiots .duration {
+            color: darkred;
+        }
+        .leLagaan .task {
+            color: purple;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .leLagaan .duration {
+            color: darkpurple;
+        }
+        .wrDangal .task {
+            color: teal;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .wrDangal .duration {
+            color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Series Task Generator</h1>
+    <div class="container">
+        <select id="webSeries">
+            <option value="threeIdiots">3 Idiots</option>
+            <option value="leLagaan">Lagaan</option>
+            <option value="wrDangal">Dangal</option>
+        </select>
+        <button onclick="generateTask()">Generate</button>
+    </div>
+    <div id="output" class="container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
