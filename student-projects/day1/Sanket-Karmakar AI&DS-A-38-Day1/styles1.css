@@ -1,0 +1,24 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin: 50px 10px;
+    background-color: whitesmoke;
+}
+
+h1{
+    background-color: burlywood;
+}
+
+.highlight{
+    color: red;
+}
+
+.heading{
+    background-color: burlywood;
+    text-transform: uppercase;
+}
+
+
+
+
+
