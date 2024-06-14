@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="exercise1.js"></script>
+    <style>
+        * {
+            text-align:center;
+            /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,50,152,1) 36%, rgba(0,212,255,1) 100%); */
+        }
+        h1 {
+            margin:40px;
+            font-size: 50px;
+        }
+        #msg{
+            margin-top:20px;
+            font-size: 18px;
+            color:rgb(4, 102, 102);
+        }
+        #msg2{
+            color:red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Series Task Simulator</h1>
+    <label for="characters">Choose a Character: </label>
+    <select name="characters" id="characters">
+        <option value="">--Choose an option--</option>
+        <option value="c1">Rachel(Friends)</option>
+        <option value="c2">Jake Paralte(B99)</option>
+        <option value="c3">Harvey Spector(Suits)</option>
+    </select>
+    <button onclick="print()">Start Task</button>
+        <div id="msg"></div>
+        <div id="msg2"></div>
+</body>
+</html>
