@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Task Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #taskContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Character Task Generator</h1>
+        <label for="characterSelect">Choose a character:</label>
+        <select id="characterSelect">
+            <option value="harry">Harry Potter (Harry Potter)</option>
+            <option value="sherlock">Sherlock Holmes (Sherlock)</option>
+            <option value="daenerys">Daenerys Targaryen (Game of Thrones)</option>
+            <option value="spock">Spock (Star Trek)</option>
+        </select>
+        <button id="generateTaskBtn">Generate Task</button>
+        <div id="taskContainer"></div>
+    </div>
+    <script>
+        document.getElementById('generateTaskBtn').addEventListener('click', function() {
+            const character = document.getElementById('characterSelect').value;
+            const taskContainer = document.getElementById('taskContainer');
+            
+            const tasks = {
+                harry: [
+                    "Practice your spells and charms.",
+                    "Visit Hogsmeade and enjoy a Butterbeer.",
+                    "Play a game of Quidditch with friends."
+                ],
+                sherlock: [
+                    "Solve a mystery in your neighborhood.",
+                    "Read a book on deductive reasoning.",
+                    "Observe people in a public place and deduce their professions."
+                ],
+                daenerys: [
+                    "Plan a strategy to conquer a kingdom.",
+                    "Learn a few phrases in Valyrian.",
+                    "Take care of your 'dragons' (pets)."
+                ],
+                spock: [
+                    "Practice logical thinking and problem-solving.",
+                    "Read about the latest advancements in science.",
+                    "Meditate to achieve a state of emotional calm."
+                ]
+            };
+            
+            const randomTask = tasks[character][Math.floor(Math.random() * tasks[character].length)];
+            taskContainer.innerHTML = `<p><strong>Task for ${character}:</strong> ${randomTask}</p>`;
+        });
+    </script>
+</body>
+</html>
