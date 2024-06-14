@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+        }
+
+        .calculator {
+            width: 320px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .display {
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            font-size: 2.5rem;
+            text-align: right;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            user-select: none;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 20px;
+            background: #f8f8f8;
+        }
+
+        .btn {
+            padding: 20px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #d0d0d0;
+        }
+
+        .operator {
+            background: #ffa726;
+            color: #fff;
+        }
+
+        .operator:hover {
+            background: #ff9800;
+        }
+
+        .clear {
+            grid-column: span 4;
+            background: #ef5350;
+            color: #fff;
+        }
+
+        .clear:hover {
+            background: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn" data-value="7">7</button>
+            <button class="btn" data-value="8">8</button>
+            <button class="btn" data-value="9">9</button>
+            <button class="btn operator" data-value="/">÷</button>
+            <button class="btn" data-value="4">4</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="6">6</button>
+            <button class="btn operator" data-value="*">×</button>
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="2">2</button>
+            <button class="btn" data-value="3">3</button>
+            <button class="btn operator" data-value="-">−</button>
+            <button class="btn" data-value="0">0</button>
+            <button class="btn" data-value=".">.</button>
+            <button class="btn operator" data-value="=">=</button>
+            <button class="btn operator" data-value="+">+</button>
+            <button class="btn clear" data-value="C">C</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const display = document.getElementById('display');
+            const buttons = document.querySelectorAll('.btn');
+
+            let currentValue = '0';
+            let operator = null;
+            let firstOperand = null;
+            let operatorClickedLast = false;
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const value = button.getAttribute('data-value');
+
+                    switch (value) {
+                        case 'C':
+                            currentValue = '0';
+                            operator = null;
+                            firstOperand = null;
+                            updateDisplay(currentValue);
+                            operatorClickedLast = false;
+                            break;
+                        case '=':
+                            if (operator && firstOperand !== null && !operatorClickedLast) {
+                                currentValue = calculate(firstOperand, currentValue, operator);
+                                updateDisplay(currentValue);
+                                operator = null;
+                                firstOperand = null;
+                            }
+                            operatorClickedLast = false;
+                            break;
+                        case '+':
+                        case '-':
+                        case '*':
+                        case '/':
+                            if (operator && firstOperand !== null && !operatorClickedLast) {
+                                currentValue = calculate(firstOperand, currentValue, operator);
+                                updateDisplay(currentValue);
+                            }
+                            firstOperand = currentValue;
+                            operator = value;
+                            currentValue = '0';
+                            operatorClickedLast = true;
+                            break;
+                        default:
+                            if (operatorClickedLast) {
+                                currentValue = value;
+                                operatorClickedLast = false;
+                            } else {
+                                currentValue = currentValue === '0' ? value : currentValue + value;
+                            }
+                            updateDisplay(currentValue);
+                            break;
+                    }
+                });
+            });
+
+            function calculate(a, b, operator) {
+                const x = parseFloat(a);
+                const y = parseFloat(b);
+
+                if (isNaN(x) || isNaN(y)) return '0';
+
+                let result;
+                switch (operator) {
+                    case '+':
+                        result = x + y;
+                        break;
+                    case '-':
+                        result = x - y;
+                        break;
+                    case '*':
+                        result = x * y;
+                        break;
+                    case '/':
+                        result = y !== 0 ? x / y : 'Infinity';
+                        break;
+                    default:
+                        return b;
+                }
+
+                return result.toFixed(5).replace(/\.?0+$/, ''); // Limit to 5 decimal places and trim trailing zeros
+            }
+
+            function updateDisplay(value) {
+                display.textContent = value;
+            }
+        });
+    </script>
+</body>
+</html>
