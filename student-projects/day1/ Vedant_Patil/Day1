@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #eee;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5em;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .btn.operator {
+            background-color: #f9a825;
+            color: #fff;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="number" id="number1" placeholder="Enter first number">
+        <input type="number" id="number2" placeholder="Enter second number">
+        <div class="buttons">
+            <button class="btn operator" data-operator="+">+</button>
+            <button class="btn operator" data-operator="-">-</button>
+            <button class="btn operator" data-operator="*">*</button>
+            <button class="btn operator" data-operator="/">/</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.btn.operator');
+            const resultDiv = document.getElementById('result');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const operator = button.getAttribute('data-operator');
+                    const number1 = parseFloat(document.getElementById('number1').value);
+                    const number2 = parseFloat(document.getElementById('number2').value);
+
+                    if (isNaN(number1) || isNaN(number2)) {
+                        resultDiv.innerText = 'Please enter valid numbers';
+                        return;
+                    }
+
+                    let result;
+                    switch (operator) {
+                        case '+':
+                            result = number1 + number2;
+                            break;
+                        case '-':
+                            result = number1 - number2;
+                            break;
+                        case '*':
+                            result = number1 * number2;
+                            break;
+                        case '/':
+                            result = number1 / number2;
+                            break;
+                        default:
+                            result = 'Unknown operator';
+                    }
+
+                    resultDiv.innerText = `Result: ${result}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
