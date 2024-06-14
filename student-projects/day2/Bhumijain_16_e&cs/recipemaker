@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        #recipeContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Generator</h1>
+        <label for="mealSelect">Choose a meal type:</label>
+        <select id="mealSelect">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+        </select>
+        <button id="generateRecipeBtn">Generate Recipe</button>
+        <div id="recipeContainer"></div>
+    </div>
+    <script>
+        document.getElementById('generateRecipeBtn').addEventListener('click', function() {
+            const meal = document.getElementById('mealSelect').value;
+            const recipeContainer = document.getElementById('recipeContainer');
+
+            const recipes = {
+                breakfast: [
+                    {
+                        name: "Pancakes",
+                        ingredients: ["Flour", "Milk", "Eggs", "Sugar", "Baking Powder", "Salt", "Butter"],
+                        instructions: "Mix all ingredients and cook on a hot griddle."
+                    },
+                    {
+                        name: "Omelette",
+                        ingredients: ["Eggs", "Cheese", "Bell Peppers", "Onions", "Salt", "Pepper"],
+                        instructions: "Beat eggs and cook with vegetables and cheese in a frying pan."
+                    }
+                ],
+                lunch: [
+                    {
+                        name: "Grilled Cheese Sandwich",
+                        ingredients: ["Bread", "Cheese", "Butter"],
+                        instructions: "Butter the bread, place cheese in between slices, and grill until golden brown."
+                    },
+                    {
+                        name: "Caesar Salad",
+                        ingredients: ["Romaine Lettuce", "Croutons", "Parmesan Cheese", "Caesar Dressing"],
+                        instructions: "Toss all ingredients together and serve chilled."
+                    }
+                ],
+                dinner: [
+                    {
+                        name: "Spaghetti Bolognese",
+                        ingredients: ["Spaghetti", "Ground Beef", "Tomato Sauce", "Onion", "Garlic", "Olive Oil", "Salt", "Pepper"],
+                        instructions: "Cook spaghetti. In another pan, sauté onion and garlic, add beef, then tomato sauce, and mix with spaghetti."
+                    },
+                    {
+                        name: "Grilled Chicken",
+                        ingredients: ["Chicken Breast", "Olive Oil", "Garlic", "Lemon Juice", "Salt", "Pepper"],
+                        instructions: "Marinate chicken with ingredients and grill until cooked through."
+                    }
+                ],
+                dessert: [
+                    {
+                        name: "Chocolate Cake",
+                        ingredients: ["Flour", "Sugar", "Cocoa Powder", "Baking Powder", "Eggs", "Milk", "Butter"],
+                        instructions: "Mix dry ingredients, add wet ingredients, bake at 350°F for 30 minutes."
+                    },
+                    {
+                        name: "Ice Cream Sundae",
+                        ingredients: ["Ice Cream", "Chocolate Syrup", "Whipped Cream", "Cherries", "Nuts"],
+                        instructions: "Scoop ice cream into a bowl, top with syrup, whipped cream, cherries, and nuts."
+                    }
+                ]
+            };
+
+            const selectedRecipe = recipes[meal][Math.floor(Math.random() * recipes[meal].length)];
+
+            recipeContainer.innerHTML = `
+                <h2>${selectedRecipe.name}</h2>
+                <h3>Ingredients:</h3>
+                <ul>
+                    ${selectedRecipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                </ul>
+                <h3>Instructions:</h3>
+                <p>${selectedRecipe.instructions}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
