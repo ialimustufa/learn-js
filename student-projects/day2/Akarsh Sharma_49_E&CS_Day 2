@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Collection</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6347;
+            text-align: center;
+        }
+        h2 {
+            color: #ff6347;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-button:hover {
+            background-color: #e5533d;
+        }
+        .recipe-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .recipe-button:hover {
+            background-color: #e5533d;
+        }
+        .recipe-details {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Recipe Collection</h1>
+    
+    <div class="container">
+        <h2>Add a New Recipe</h2>
+        <form id="recipeForm">
+            <div class="form-group">
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" name="recipeName" required>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" name="ingredients" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="procedure">Procedure:</label>
+                <textarea id="procedure" name="procedure" rows="5" required></textarea>
+            </div>
+            <button class="form-button" type="button" onclick="createRecipe()">Create Recipe</button>
+        </form>
+    </div>
+    
+    <div class="container">
+        <h2>Recipes</h2>
+        <div id="recipesContainer">
+            <!-- Recipe buttons will appear here -->
+        </div>
+    </div>
+
+    <script>
+        function createRecipe() {
+            const recipeName = document.getElementById('recipeName').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const procedure = document.getElementById('procedure').value;
+
+            if (recipeName && ingredients && procedure) {
+                const recipeButton = document.createElement('button');
+                recipeButton.className = 'recipe-button';
+                recipeButton.innerText = recipeName;
+                recipeButton.onclick = function() {
+                    const detailsDiv = this.nextElementSibling;
+                    detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+                };
+
+                const recipeDetails = document.createElement('div');
+                recipeDetails.className = 'recipe-details';
+                recipeDetails.innerHTML = <strong>Ingredients:</strong><br>${ingredients.replace(/\n/g, '<br>')}<br><br><strong>Procedure:</strong><br>${procedure.replace(/\n/g, '<br>')};
+
+                const recipesContainer = document.getElementById('recipesContainer');
+                recipesContainer.appendChild(recipeButton);
+                recipesContainer.appendChild(recipeDetails);
+
+                // Clear the form fields
+                document.getElementById('recipeForm').reset();
+            } else {
+                alert('Please fill out all fields');
+            }
+        }
+    </script>
+
+</body>
+</html>
