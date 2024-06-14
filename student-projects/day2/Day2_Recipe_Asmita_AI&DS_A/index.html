@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavors of India</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
+            display: block;
+            margin-top: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flavors of India</h1>
+    <h2>Add Your Recipe</h2>
+    <form id="recipeForm">
+        <label for="recipeName">Recipe Name:</label>
+        <input type="text" id="recipeName" required>
+
+        <label for="ingredients">Ingredients (comma-separated):</label>
+        <input type="text" id="ingredients" required>
+
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" rows="4" required></textarea>
+
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <h2>Recipe List</h2>
+    <ul id="recipeList">
+        <li>
+            <h3>Butter Chicken</h3>
+            <p>Ingredients: Chicken, Butter, Cream, Tomatoes, Spices</p>
+            <p>Instructions: Cook chicken in butter, add tomatoes and spices, simmer with cream.</p>
+        </li>
+        <li>
+            <h3>Biryani</h3>
+            <p>Ingredients: Rice, Chicken, Yogurt, Spices, Onions, Saffron</p>
+            <p>Instructions: Layer cooked rice with spiced chicken, bake until flavors meld.</p>
+        </li>
+    </ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
