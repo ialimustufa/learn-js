@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f200ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #00efd3;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #02eac4;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdbdbd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #01f4d7;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #00ffd5;
+        }
+
+        #displayInfo {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        #displayInfo h2 {
+            color: #00f2d6;
+        }
+
+        #displayInfo p {
+            margin: 10px 0;
+            color: #00ffd5;
+        }
+
+    </style>
+    <title>User Information Form</title>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <form id="userInfoForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+        
+        <label for="hobbies">Hobbies:</label>
+        <textarea id="hobbies" name="hobbies"></textarea>
+        
+        <label for="achievements">Achievements:</label>
+        <textarea id="achievements" name="achievements"></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+    <div id="displayInfo"></div>
+    <script>
+        // script.js
+        const userInfoForm = document.getElementById('userInfoForm');
+        const displayInfo = document.getElementById('displayInfo');
+
+        userInfoForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const hobbies = document.getElementById('hobbies').value;
+            const achievements = document.getElementById('achievements').value;
+
+            // Display collected information
+            displayInfo.innerHTML = `
+                <h2>User Information:</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Age:</strong> ${age}</p>
+                <p><strong>Birthdate:</strong> ${birthdate}</p>
+                <p><strong>Hobbies:</strong> ${hobbies}</p>
+                <p><strong>Achievements:</strong> ${achievements}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
