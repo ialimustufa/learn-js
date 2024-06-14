@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=dev  ice-width, initial-scale=1.0">
+<title>This keyword</title>
+<style>
+body {
+background: linear-gradient(to right, #e0f7fa, #e1bee7);
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+font-family: Arial, sans-serif;
+}
+.calculator-container {
+text-align: center;
+background: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.calculator-container input {
+width: calc(50% - 20px);
+padding: 10px;
+margin: 10px;
+font-size: 18px;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+.buttons {
+margin: 20px 0;
+}
+.buttons button {
+width: 50px;
+height: 50px;
+margin: 10px;
+font-size: 18px;
+border: none;
+border-radius: 50%;
+background: rgba(0, 0, 0, 0.1);
+cursor: pointer;
+transition: background 0.3s;
+}
+.buttons button:hover {
+background: rgba(0, 0, 0, 0.2);
+}
+#result {
+font-size: 20px;
+margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<button id="myButton">Click me</button>
+<div class="calculator-container">
+<input type="text" id="value1" placeholder="Enter first number">
+<input type="text" id="value2" placeholder="Enter second number">
+<div class="buttons">
+<button onclick="performOperation('add')">+</button>
+<button onclick="performOperation('subtract')">-</button>
+<button onclick="performOperation('multiply')">*</button>
+<button onclick="performOperation('divide')">/</button>
+<button onclick="performOperation('modulus')">%</button>
+</div>
+<div id="result">Result: </div>
+</div>
+<script>
+let button = document.getElementById('myButton');
+button.addEventListener('click', function() {
+console.log(this);
+});
+
+function performOperation(operation) {
+const value1 = parseFloat(document.getElementById('value1').value);
+const value2 = parseFloat(document.getElementById('value2').value);
+let result = '';
+if (isNaN(value1) || isNaN(value2)) {
+result = 'Please enter valid numbers';
+} else {
+switch (operation) {
+case 'add':
+result = value1 + value2;
+break;
+case 'subtract':
+result = value1 - value2;
+break;
+case 'multiply':
+result = value1 * value2;
+break;
+case 'divide':
+if (value2 === 0) {
+result = 'Cannot divide by zero';
+} else {
+result = value1 / value2;
+}
+break;
+case 'modulus':
+result = value1 % value2;
+break;
+default:
+result = 'Unknown operation';
+}
+}
+document.getElementById('result').textContent = `Result: ${result}`;
+}
+</script>
+</body>
+</html>
