@@ -1,0 +1,78 @@
+:root {
+    --primary-color: #5C5470;
+    --secondary-color: #FFD460;
+    --accent-color: #44355B;
+    --background-color: #FAFAFA;
+    --text-color: #333;
+    --button-text-color: #FFFFFF;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2, h3, label {
+    font-family: 'Merriweather', serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+input[type="text"], textarea, input[type="submit"], select {
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+input[type="text"], textarea, select {
+    border: 2px solid var(--primary-color);
+}
+
+.largeBox {
+    min-height: 100px;
+}
+
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.recipeList, .recipeLoad {
+    animation: fadeIn 0.5s ease-out;
+}
