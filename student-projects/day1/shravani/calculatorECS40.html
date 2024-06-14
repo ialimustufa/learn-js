@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            font-size: 1.2em;
+        }
+        .calculator button {
+            width: 30%;
+            padding: 10px;
+            margin: 5px 1%;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="text" id="display" disabled>
+    <br>
+    <button onclick="appendToDisplay('+')">Addition</button>
+    <button onclick="appendToDisplay('*')">Multiplication</button>
+    <button onclick="appendToDisplay('/')">Division</button>
+    <button onclick="appendToDisplay('-')">Subtraction</button>
+    <br>
+    <button onclick="calculate()" style="width: 48%;">=</button>
+    <button onclick="clearDisplay()" style="width: 48%;">Clear</button>
+</div>
+
+<script>
+    let currentValue = '';
+    let operator = '';
+    let firstOperand = null;
+
+    function appendToDisplay(op) {
+        
+        if (firstOperand === null) {
+            firstOperand = parseFloat(prompt('Enter the first number:'));
+            document.getElementById('display').value = firstOperand;
+        }
+        operator = op;
+        document.getElementById('display').value += ' ' + operator + ' ';
+    }
+
+    function calculate() {
+        const secondOperand = parseFloat(prompt('Enter the second number:'));
+        let result;
+        switch (operator) {
+            case '+':
+                result = firstOperand + secondOperand;
+                break;
+            case '-':
+                result = firstOperand - secondOperand;
+                break;
+            case '*':
+                result = firstOperand * secondOperand;
+                break;
+            case '/':
+                result = firstOperand / secondOperand;
+                break;
+        }
+        document.getElementById('display').value = result;
+        // Reset the calculator for the next calculation
+        firstOperand = null;
+        operator = '';
+        currentValue = '';
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+        firstOperand = null;
+        operator = '';
+        currentValue = '';
+    }
+</script>
+
+</body>
+</html>

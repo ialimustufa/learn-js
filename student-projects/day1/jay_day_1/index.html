@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown Menu Using Select Tab</title>
+    <script src="task1.js"></script>
+</head>
+<body>
+    <b>Select your favourite Franchise</b>
+    <select id="franchiseList" onchange="updateFranchise()">
+        <option value="">---Choose Franchise---</option>
+        <option value="Marvel">Marvel</option>
+        <option value="DC">DC</option>
+    </select>
+    <p>Your selected Franchise is: <input type="text" id="selectedFranchise" size="20" readonly></p>
+
+    <b>Select your favourite Character</b>
+    <select id="characterList" onchange="updateCharacter()">
+        <option value="">---Choose Character---</option>
+    </select>
+    <p>Your selected Character is: <input type="text" id="selectedCharacter" size="20" readonly></p>
+</body>
+</html>

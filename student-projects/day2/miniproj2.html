@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipes Finder</title>
+    
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #recipeList {
+            display: -moz-stack;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .recipe-card {
+            border: 1px solid #7a1d1d;
+            padding: 20px;
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+
+        #recipeDetails {
+            border: 1px solid #3a3b74;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #669c72;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #92ad98;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cook Smarter, Not Harder: Search Your Way to Yummy!</h1>
+
+    <h2>Add Your Recipe</h2>
+    <form id="addRecipeForm"> <div>
+        <label for="recipeNameInput">Recipe Name:</label>
+        <input type="text" id="recipeNameInput" required><br>
+    </div>
+    <div>
+        <label for="ingredientsInput">Ingredients (comma-separated):</label>
+        <input type="text" id="ingredientsInput" required><br>
+    </div>
+    <div>
+        <label for="instructionsInput">Instructions:</label>
+        <textarea id="instructionsInput" required></textarea><br>
+    </div>
+        <button type="submit" id="addButton">Add Recipe</button>
+    </form>
+    
+    <div id="recipeList"></div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <script src="miniproj2.js"></script>
+</body>
+</html>
