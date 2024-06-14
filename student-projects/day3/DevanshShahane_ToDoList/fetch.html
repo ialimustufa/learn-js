@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>
+       Fetch API Example
+   </title>
+   <style>
+       body{
+           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+           margin: 20 px;
+       }
+       #output{
+           margin-top: 20 px;
+           border: 2px;
+       }
+   </style>
+</head>
+<body>
+   <h1> Fetch API Example</h1>
+   <button onclick = "fetchData()"> Fetch Data</button>
+   <div id="output"> </div>
+
+
+   <script>
+function fetchData(){
+   const output = document.getElementById('output');
+   output.textContent = 'Loading..';
+
+   fetch('https://jsonplaceholder.typicode.com/posts/1').then(response =>{
+       if (!response.ok) {
+           throw new Error('Network response was not ok' + response.statusText);
+       }
+       return response.json();
+   }).then(data => {
+       console.log('Data fetched:', data);
+       output.innerHTML = `
+       <h2> ${data.title}</h2>
+       <p>${data.body}</p>
+       `;
+   }).catch(error =>{
+       console.error('There was a problem with the fetch operation:', error);
+       output.textContent = `Error fetching data`;
+   });
+}
+
+
+   </script>
+
+
+</body>
+</html>
+
