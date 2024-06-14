@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .screen {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .clear-btn,
+  .equals-btn {
+    padding: 10px 20px;
+  }
+  
+  .equation {
+    display: flex;
+    height: 40px;
+    padding: 10px 40px;
+    border: 1px solid black;
+    align-items: center;
+    font-size: 20px;
+  }
+  
+  .result {
+    display: flex;
+    height: 30px;
+    padding: 8px 30px;
+    border: 1px dashed red;
+    background-color: aqua;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .numbers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 220px;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .numbers button {
+    width: 70px;
+    height: 30px;
+  }
+  
+  .zero-dot {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 220px;
+    height: 30px;
+  }
+  
+  .zero-dot button {
+    text-align: center;
+    width: 105px;
+  }
+  
+  .buttons {
+    display: flex;
+  }
+  
+  .operators {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 5px;
+  }
+  
+  .operators button {
+    width: 30px;
+    height: 30px;
+  }
+  
