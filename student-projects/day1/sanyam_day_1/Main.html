@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands</title>
+    <script src="day1script.js"></script>
+    <style>
+        body{
+        text-align : center;
+        font-family: 'Courier New', Courier, monospace;
+        margin-top: 50px; 
+        background-color: antiquewhite;
+        font-size: x-large;
+    }
+    .highlight{
+        color: blue;
+        font-weight: bold;
+    }
+        
+    </style>
+</head>
+<body>
+    <h1>Car Brand Selector</h1>
+    <label for="brand">Choose a Brand</label>
+    <select id="brand">
+        <option value="">---Choose Brand---</option>
+        <option value="Bugatti">Bugatti</option>
+        <option value="Koenigsegg">Koenigsegg</option>
+        <option value="Porsche">Porche</option>
+    </select>
+    <button onclick="startSearch()">Start Search</button>
+    <div id="search"></div>
+    <div id="message"></div>
+</body>
+</html>

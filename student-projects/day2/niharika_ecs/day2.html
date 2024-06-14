@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flavours of India</title>
+<style>
+.recipeButton {
+    display: inline-block;
+    margin-right: 10px;
+}
+</style>
+</head>
+<body>
+<h1>Flavours of India</h1>
+<h2>Add your recipe</h2>
+<h4>Please ensure to access only one recipe at a time by deselecting it from the main page with a single click on the button</h4>
+<form id="recipeForm">
+    <label for="recipeName">Recipe Name:</label><br>
+    <input type="text" id="recipeName" name="recipeName"><br>
+    <label for="ingredients">Ingredients:</label><br>
+    <textarea id="ingredients" name="ingredients"></textarea><br>
+    <label for="instructions">Instructions:</label><br>
+    <textarea id="instructions" name="instructions"></textarea><br>
+    <button type="button" onclick="addRecipe()">Add Recipe</button>
+</form>
+<div id="recipes"></div>
+
+<script>
+var recipes = [];
+
+function addRecipe() {
+    var recipeName = document.getElementById("recipeName").value;
+    var ingredients = document.getElementById("ingredients").value;
+    var instructions = document.getElementById("instructions").value;
+    
+    var recipe = {
+        name: recipeName,
+        ingredients: ingredients,
+        instructions: instructions
+    };
+    
+    recipes.push(recipe);
+    
+    var recipeButton = document.createElement("button");
+    recipeButton.innerHTML = recipeName;
+    recipeButton.className = "recipeButton";
+    recipeButton.onclick = function() {
+        toggleRecipeDisplay(recipe);
+    };
+    
+    document.getElementById("recipes").appendChild(recipeButton);
+    
+    displayRecipe(recipe);
+}
+
+function toggleRecipeDisplay(recipe) {
+    var index = recipes.indexOf(recipe);
+    var recipeDetails = document.getElementById("recipe" + index);
+    if (recipeDetails.style.display === "none") {
+        recipeDetails.style.display = "block";
+    } else {
+        recipeDetails.style.display = "none";
+    }
+}
+
+function displayRecipe(recipe) {
+    var index = recipes.indexOf(recipe);
+    var recipeDetails = document.createElement("div");
+    recipeDetails.id = "recipe" + index;
+    recipeDetails.style.display = "none";
+    recipeDetails.innerHTML = "<h3>" + recipe.name + "</h3>" +
+                            "<p><strong>Ingredients:</strong><br>" + recipe.ingredients + "</p>" +
+                            "<p><strong>Instructions:</strong><br>" + recipe.instructions + "</p>";
+    
+    document.getElementById("recipes").appendChild(recipeDetails);
+}
+</script>
+</body>
+</html>
