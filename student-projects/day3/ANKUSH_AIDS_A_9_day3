@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Prioritizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: rgb(90, 232, 232);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .task-form {
+            margin: 20px;
+        }
+
+        input, select, button {
+            margin: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .high-priority {
+            background-color: #ff4d4d;
+        }
+
+        .medium-priority {
+            background-color: #ffd633;
+        }
+
+        .low-priority {
+            background-color: #85e085;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Prioritizer</h1>
+    <div class="task-form">
+        <input type="text" id="taskName" placeholder="Enter task name">
+        <select id="priority">
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+        </select>
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <ul id="taskList"></ul>
+    <script>
+        function addTask() {
+            const taskName = document.getElementById('taskName').value;
+            const priority = document.getElementById('priority').value;
+
+            if (taskName.trim() === '') {
+                alert('Please enter a task name.');
+                return;
+            }
+
+            const taskList = document.getElementById('taskList');
+            const taskItem = document.createElement('li');
+            taskItem.textContent = `${taskName} (Priority: ${priority})`;
+            taskItem.className = `${priority}-priority`;
+
+            // Add a unique identifier to the task
+            taskItem.id = 'task-' + new Date().getTime();
+
+            // Add event listener to remove the task on click
+            taskItem.onclick = function() {
+                taskList.removeChild(taskItem);
+            };
+
+            taskList.appendChild(taskItem);
+
+            // Clear the input field
+            document.getElementById('taskName').value = '';
+        }
+    </script>
+</body>
+</html>
