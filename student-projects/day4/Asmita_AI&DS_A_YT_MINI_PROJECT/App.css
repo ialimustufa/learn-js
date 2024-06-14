@@ -1,0 +1,23 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.ui.container{
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.search-bar{
+  margin-bottom: 20px;
+  margin-left:10px ;
+
+}
+
+.video-item{
+  margin-bottom: 30px;
+  
+}
+
+.video-player{
+  margin-bottom: 30px;
+}
