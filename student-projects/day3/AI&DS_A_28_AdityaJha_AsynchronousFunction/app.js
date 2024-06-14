@@ -1,122 +1,49 @@
-function fetchDataWithCallback(callback) {
-    setTimeout(() => {
-      const data = 'Data fetched with callback';
-      callback(data);
-    }, 2000);
-  }
-  
-  function runCallbackExample() {
-    const output = document.getElementById('callback-output');
-    fetchDataWithCallback((data) => {
-      output.textContent = data;
-    });
-  }
-  
-  function fetchDataWithPromise() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const success = true;
-        if (success) {
-          resolve('Data fetched with promise');
-        } else {
-          reject('Error fetching data');
+// Selecting an element by ID
+let taskList = document.getElementById('task-list');
+console.log(taskList);
+
+// Selecting elements by class
+let taskItems = document.getElementsByClassName('task-item');
+console.log(taskItems);
+
+// Selecting an element by CSS selector
+let addButton = document.querySelector('.add-button');
+console.log(addButton);
+
+// Changing text content
+addButton.textContent = "Add a New Task";
+
+// Changing HTML content
+taskList.innerHTML = "<li class='task-item'><span>Updated Task 1</span><div class='task-buttons'><button class='edit-button'>Edit</button><button class='delete-button'>Delete</button></div></li>";
+
+// Changing attributes
+taskList.setAttribute('class', 'updated-task-list');
+console.log(taskList.getAttribute('class')); // Output: updated-task-list
+
+// Adding a click event listener
+addButton.addEventListener('click', function() {
+    alert('Add button clicked!');
+});
+
+// Event delegation example
+taskList.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('delete-button')) {
+        let taskItem = event.target.closest('.task-item');
+        taskList.removeChild(taskItem);
+    } else if (event.target && event.target.classList.contains('edit-button')) {
+        let taskItem = event.target.closest('.task-item');
+        let newTitle = prompt("Edit task:", taskItem.querySelector('span').textContent);
+        if (newTitle !== null && newTitle !== "") {
+            taskItem.querySelector('span').textContent = newTitle;
         }
-      }, 2000);
-    });
-  }
-  
-  function runPromiseExample() {
-    const output = document.getElementById('promise-output');
-    fetchDataWithPromise()
-      .then(data => {
-        output.textContent = data;
-      })
-      .catch(error => {
-        output.textContent = error;
-      });
-  }
-  
-  function fetchData() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('Data fetched with async/await');
-      }, 2000);
-    });
-  }
-  
-  async function runAsyncAwaitExample() {
-    const output = document.getElementById('async-output');
-    try {
-      const data = await fetchData();
-      output.textContent = data;
-    } catch (error) {
-      output.textContent = error;
     }
-  }
-  
-  function fetchWithPromises() {
-    const output = document.getElementById('fetch-promises-output');
-    output.innerHTML = '';
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(data => {
-        data.slice(0, 5).forEach(post => {
-          const li = document.createElement('li');
-          li.textContent = post.title;
-          output.appendChild(li);
-        });
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-  
-  async function fetchWithAsyncAwait() {
-    const output = document.getElementById('fetch-async-output');
-    output.innerHTML = '';
-    try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-      const data = await response.json();
-      data.slice(0, 5).forEach(post => {
-        const li = document.createElement('li');
-        li.textContent = post.title;
-        output.appendChild(li);
-      });
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-  
-  function fetchMultipleResources() {
-    const output = document.getElementById('promise-all-output');
-    output.innerHTML = '';
-    
-    const promise1 = fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json());
-    const promise2 = fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json());
-  
-    Promise.all([promise1, promise2])
-      .then(values => {
-        const [posts, users] = values;
-        const postTitles = posts.slice(0, 3).map(post => `<li>Post: ${post.title}</li>`).join('');
-        const userNames = users.slice(0, 3).map(user => `<li>User: ${user.name}</li>`).join('');
-        output.innerHTML = postTitles + userNames;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-  
-  function racePromises() {
-    const output = document.getElementById('promise-race-output');
-    
-    const promise1 = new Promise((resolve) => setTimeout(resolve, 100, 'First'));
-    const promise2 = new Promise((resolve) => setTimeout(resolve, 200, 'Second'));
-  
-    Promise.race([promise1, promise2])
-      .then(value => {
-        output.textContent = `Winner: ${value}`;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
+});
+
+// Creating and appending a new element
+let newTask = document.createElement('li');
+newTask.className = "task-item";
+newTask.innerHTML = "<span>New Task</span><div class='task-buttons'><button class='edit-button'>Edit</button><button class='delete-button'>Delete</button></div>";
+taskList.appendChild(newTask);
+
+// Removing an element
+taskList.removeChild(newTask);

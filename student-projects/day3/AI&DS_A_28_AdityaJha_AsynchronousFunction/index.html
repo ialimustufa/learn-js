@@ -1,67 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asynchronous JavaScript Examples</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    .example {
-      margin-bottom: 20px;
-    }
-    button {
-      margin-top: 10px;
-    }
-  </style>
+    <title>DOM Manipulation Example</title>
+    <style>
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .edit-button, .delete-button {
+            margin-left: 5px;
+        }
+        .task-buttons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-  <h1>Asynchronous JavaScript Examples</h1>
-  
-  <div class="example">
-    <h2>Callback Example</h2>
-    <button onclick="runCallbackExample()">Fetch Data with Callback</button>
-    <p id="callback-output"></p>
-  </div>
-
-  <div class="example">
-    <h2>Promise Example</h2>
-    <button onclick="runPromiseExample()">Fetch Data with Promise</button>
-    <p id="promise-output"></p>
-  </div>
-
-  <div class="example">
-    <h2>Async/Await Example</h2>
-    <button onclick="runAsyncAwaitExample()">Fetch Data with Async/Await</button>
-    <p id="async-output"></p>
-  </div>
-
-  <div class="example">
-    <h2>Fetch API with Promises</h2>
-    <button onclick="fetchWithPromises()">Fetch Posts</button>
-    <ul id="fetch-promises-output"></ul>
-  </div>
-
-  <div class="example">
-    <h2>Fetch API with Async/Await</h2>
-    <button onclick="fetchWithAsyncAwait()">Fetch Posts</button>
-    <ul id="fetch-async-output"></ul>
-  </div>
-
-  <div class="example">
-    <h2>Promise.all Example</h2>
-    <button onclick="fetchMultipleResources()">Fetch Posts and Users</button>
-    <ul id="promise-all-output"></ul>
-  </div>
-
-  <div class="example">
-    <h2>Promise.race Example</h2>
-    <button onclick="racePromises()">Race Promises</button>
-    <p id="promise-race-output"></p>
-  </div>
-
-  <script src="app.js"></script>
+    <h1>To-Do List</h1>
+    <input type="text" id="task-input" placeholder="Enter a new task">
+    <button id="add-button" class="add-button">Add Task</button>
+    <ul id="task-list">
+        <li class="task-item">
+            <span>Sample Task 1</span>
+            <div class="task-buttons">
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
+            </div>
+        </li>
+        <li class="task-item">
+            <span>Sample Task 2</span>
+            <div class="task-buttons">
+                <button class="edit-button">Edit</button>
+                <button class="delete-button">Delete</button>
+            </div>
+        </li>
+    </ul>
+    <script src="script.js"></script>
 </body>
 </html>
