@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Series Task Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+           
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #df5510;
+        }
+
+        #messageContainer {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Web Series Task Simulator</h1>
+    <select id="webSeriesDropdown">
+        <option value="friends">Friends</option>
+        <option value="strangerThings">Stranger Things</option>
+        <option value="breakingBad">Breaking Bad</option>
+    </select>
+    <button onclick="displayMessage()">Show Message</button>
+
+    <div id="messageContainer"></div>
+<script>
+        function displayMessage() {
+            const dropdown = document.getElementById("webSeriesDropdown");
+            const selectedSeries = dropdown.value;
+            let message = "";
+
+            switch (selectedSeries) {
+                case "friends":
+                    message = "Best friends make good times better!!";
+                    break;
+                case "strangerThings":
+                    message = "Open The Gate.Eleven is here!!";
+                    break;
+                case "breakingBad":
+                    message = "I am the one who knocks!!";
+                    break;
+                default:
+                    message = "Select a web series from the dropdown.";
+            }
+
+            document.getElementById("messageContainer").textContent = message;
+        }
+    </script>
+</body>
+
+</html>
