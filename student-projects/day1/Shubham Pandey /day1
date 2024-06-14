@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+        .calculator-container {
+            border: 2px solid #000;
+            border-radius: 8px;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: #fff;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 20px;
+            font-size: 1.2rem;
+            border: 1px solid #1b1818;
+            border-radius: 4px;
+            background-color: #b16060;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #d86565;
+        }
+        #result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Simple Calculator</h1>
+        <input type="number" id="value1" placeholder="Enter first number">
+        <input type="number" id="value2" placeholder="Enter second number">
+        <div class="buttons">
+            <button onclick="performOperation('add')">+</button>
+            <button onclick="performOperation('subtract')">-</button>
+            <button onclick="performOperation('multiply')">*</button>
+            <button onclick="performOperation('divide')">/</button>
+        </div>
+        <div id="result">Result will be shown here</div>
+    </div>
+    <script>
+        function performOperation(operation) {
+            const value1 = parseFloat(document.getElementById('value1').value);
+            const value2 = parseFloat(document.getElementById('value2').value);
+            let result;
+
+            if (isNaN(value1) || isNaN(value2)) {
+                result = 'Please enter valid numbers.';
+            } else {
+                switch (operation) {
+                    case 'add':
+                        result = value1 + value2;
+                        break;
+                    case 'subtract':
+                        result = value1 - value2;
+                        break;
+                    case 'multiply':
+                        result = value1 * value2;
+                        break;
+                    case 'divide':
+                        result = value2 !== 0 ? value1 / value2 : 'Cannot divide by zero';
+                        break;
+                    default:
+                        result = 'Invalid operation';
+                }
+            }
+
+            document.getElementById('result').innerText = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
