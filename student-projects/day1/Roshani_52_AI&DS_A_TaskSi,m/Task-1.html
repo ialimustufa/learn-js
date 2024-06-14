@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Series Task Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        select, button {
+            font-size: 16px;
+            margin: 10px;
+        }
+        #taskMessage {
+            margin-top: 20px;
+            font-size: 20px;
+            color: red;
+        }
+        .highlight{
+            color:aqua;
+            font-weight:bold;
+                
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Series Task Simulator</h1>
+    <label for="character">Choose a character:</label>
+    <select id="character">
+        <option value="Eleven">Eleven (Stranger Things)</option>
+        <option value="Jon Snow">Jon Snow (Game of Thrones)</option>
+    
+    </select>
+    <button onclick="startTask()">Start Task</button>
+
+    <div id="taskMessage">Good luck!</div>
+    <div id="Message"></div>
+
+    <script src="Task-1.js"></script>
+</body>
+</html>
