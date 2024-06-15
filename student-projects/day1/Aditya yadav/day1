@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #5c3939;
+}
+
+.calculator {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    trans
+}
+
+.heading{
+    color: black;
+    margin-top: 5px;
+    text-align: center;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+    width: calc(50% - 40px);
+    font-size: 16px;
+    border-radius: 8px; 
+    border: 0px solid #ccc;
+}
+
+.buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+  
+  </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="heading"><h2> Calculator</h2h2></div>
+        <input type="number" id="num1" placeholder="Enter first number">
+        <input type="number" id="num2" placeholder="Enter second number">
+        <div class="buttons">
+            <button onclick="performOperation('+')">+</button>
+            <button onclick="performOperation('-')">-</button>
+            <button onclick="performOperation('*')">X</button>
+            <button onclick="performOperation('/')">/</button>
+            <button onclick="performOperation('%')">%</button>
+        </div>
+        <div class="result">
+            Result: <span id="result">0</span>
+        </div>
+    </div>
+    <script>
+    function performOperation(operator) {
+    const num1 = parseFloat(document.getElementById('num1').value);
+    const num2 = parseFloat(document.getElementById('num2').value);
+    let result = 0;
+
+    if (isNaN(num1) || isNaN(num2)) {
+        alert('Please enter valid numbers');
+        return;
+    }
+
+    switch (operator) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            result = num1 / num2;
+            break;
+        case '%':
+            result = num1 / num2;
+            break;
+        default:
+            alert('Invalid operator');
+            return;
+    }
+
+    document.getElementById('result').textContent = result;
+}
+
+    </script>
+</body>
+</html>
