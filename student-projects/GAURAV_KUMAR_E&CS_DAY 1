@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comedy Series Task Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+        }
+        select, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        #task {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Comedy Series Task Simulator</h1>
+        <label for="character">Choose a character:</label>
+        <select id="character">
+            <option value="Michael Scott (The Office)">Michael Scott (The Office)</option>
+            <option value="Leslie Knope (Parks and Recreation)">Leslie Knope (Parks and Recreation)</option>
+            <option value="Jake Peralta (Brooklyn Nine-Nine)">Jake Peralta (Brooklyn Nine-Nine)</option>
+            <option value="Sheldon Cooper (The Big Bang Theory)">Sheldon Cooper (The Big Bang Theory)</option>
+            <option value="Eleanor Shellstrop (The Good Place)">Eleanor Shellstrop (The Good Place)</option>
+        </select>
+        <br>
+        <button onclick="startTask()">Start Task</button>
+        <p id="task"></p>
+    </div>
+
+    <script>
+        function startTask() {
+            const character = document.getElementById('character').value;
+            const tasks = {
+                'Michael Scott (The Office)': 'Host a diversity day.',
+                'Leslie Knope (Parks and Recreation)': 'Organize a harvest festival.',
+                'Jake Peralta (Brooklyn Nine-Nine)': 'Solve a Halloween heist.',
+                'Sheldon Cooper (The Big Bang Theory)': 'Win a Nobel Prize in Physics.',
+                'Eleanor Shellstrop (The Good Place)': 'Earn enough points to stay in The Good Place.'
+            };
+            document.getElementById('task').innerText = `Task: ${tasks[character]}`;
+        }
+    </script>
+</body>
+</html>
