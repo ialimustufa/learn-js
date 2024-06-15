@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Indian Cuisine Recipes</title>
+    <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Thaloma, Geneva, Verdana, sans-serif;
+    background-color: #96a24757;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  h1 {
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+  }
+  
+  nav a:hover {
+    background-color: #e65c00;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ff6600;
+    text-align: center;
+  }
+  
+  form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    justify-content: center;
+    align-items: center;
+    color: rgba(64, 69, 37, 0.688);
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
+  fieldset {
+    border: none;
+    margin-bottom: 1rem;
+  }
+  
+  legend {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button[type="submit"] {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #e65c00;
+    transform: translateY(-2px);
+  }
+  
+  #recipeList {
+    margin-top: 2rem;
+  }
+  
+  .recipe-card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .recipe-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  #recipeDetails {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  #recipeDetails.hidden {
+    display: none;
+  }
+  
+  #recipeDetails h2 {
+    margin-top: 0;
+  }
+  
+  #recipeDetails ul {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+  
+  #recipeDetails li {
+    margin-bottom: 0.5rem;
+  }
+  
+  #closeButton {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  #closeButton:hover {
+    background-color: #e65c00;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  
+  </style>
+</head>
+<body>
+    <h1>Spice Odessy</h1>
+
+    <h2>Add Your Recipe</h2>
+    <form id="addRecipeForm"> <div>
+        <label for="recipeNameInput">Recipe Name:</label>
+        <input type="text" id="recipeNameInput" required><br>
+    </div>
+    <div>
+        <label for="ingredientsInput">Ingredients (comma-separated):</label>
+        <input type="text" id="ingredientsInput" required><br>
+    </div>
+    <div>
+        <label for="instructionsInput">Instructions:</label>
+        <textarea id="instructionsInput" required></textarea><br>
+    </div>
+        <button type="submit" id="addButton">Add Recipe</button>
+    </form>
+    
+    <div id="recipeListContainer">
+        <div id="recipeList"></div>
+    </div>
+
+    <div id="recipeDetails" class="hidden">
+        <h2 id="recipeName"></h2>
+        <h3>Ingredients:</h3>
+        <ul id="ingredientList"></ul>
+        <h3>Instructions:</h3>
+        <p id="recipeInstructions"></p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <script>
+
+let recipes = [
+    {
+        name: "Butter Chicken",
+        ingredients: ["Chicken", "Tomato", "Onion", "Butter", "Spices"],
+        instructions: "Marinate chicken in yogurt and spices. Cook in a creamy tomato sauce with butter."
+    },
+    {
+        name: "Biryani",
+        ingredients: ["Rice", "Meat/Vegetables", "Spices", "Yogurt"],
+        instructions: "Layer rice and marinated meat/vegetables. Cook on low heat with fragrant spices."
+    }
+];
+
+
+const recipeList = document.getElementById("recipeList");
+const recipeDetails = document.getElementById("recipeDetails");
+const addRecipeForm = document.getElementById("addRecipeForm"); 
+const recipeNameInput = document.getElementById("recipeNameInput");
+const ingredientsInput = document.getElementById("ingredientsInput");
+const instructionsInput = document.getElementById("instructionsInput");
+
+
+function showRecipeDetails(recipe) {
+    document.getElementById("recipeName").textContent = recipe.name;
+    const ingredientList = document.getElementById("ingredientList");
+    ingredientList.innerHTML = ""; 
+    recipe.ingredients.forEach(ingredient => {
+        const listItem = document.createElement("li");
+        listItem.textContent = ingredient;
+        ingredientList.appendChild(listItem);
+    });
+    document.getElementById("recipeInstructions").textContent = recipe.instructions;
+    recipeDetails.classList.remove("hidden");
+}
+
+
+function createRecipeCard(recipe) {
+    const card = document.createElement("div");
+    card.classList.add("recipe-card");
+    card.textContent = recipe.name;
+    card.addEventListener("click", () => showRecipeDetails(recipe));
+    recipeList.appendChild(card);
+}
+
+
+
+addRecipeForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const newRecipe = {
+        name: recipeNameInput.value,
+        ingredients: ingredientsInput.value.split(",").map(item => item.trim()),
+        instructions: instructionsInput.value
+    };
+    
+    recipes.push(newRecipe); 
+    createRecipeCard(newRecipe); 
+
+    recipeNameInput.value = "";
+    ingredientsInput.value = "";
+    instructionsInput.value = "";
+});
+
+
+document.getElementById("closeButton").addEventListener("click", () => {
+    recipeDetails.classList.add("hidden");
+});
+
+
+
+recipes.forEach(createRecipeCard);
+
+
+Advance - store in local memory
+
+function loadRecipesFromLocalStorage() {
+    const storedRecipes = localStorage.getItem("recipes");
+        recipes = JSON.parse(storedRecipes);
+        recipes.forEach(createRecipeCard); // Create cards for stored recipes
+    }
+
+function saveRecipesToLocalStorage() {
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+}
+
+loadRecipesFromLocalStorage();
+
+Add this line in the add recipie
+
+
+
+    
+    </script>
+</body>
+</html>
