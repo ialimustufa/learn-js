@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Entry</title>
+    <style>
+        body {
+            font-family: cursive, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        .input-section {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #132478;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #3a4297;
+        }
+        .output-section {
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .output-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .output-section li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Mania!</h1>
+
+    <div class="input-section">
+        <label for="recipeName">Recipe Name:</label>
+        <input type="text" id="recipeName" placeholder="Enter recipe name">
+    </div>
+
+    <div class="input-section">
+        <label for="ingredient">Ingredient:</label>
+        <input type="text" id="ingredient" placeholder="Enter an ingredient">
+        <button onclick="addIngredient()">Add Ingredient</button>
+        <ul id="ingredientsList"></ul>
+    </div>
+
+    <div class="input-section">
+        <label for="instruction">Instructions:</label>
+        <input type="text" id="instruction" placeholder="Enter an instruction">
+        <button onclick="addInstruction()">Add Instruction</button>
+        <ul id="instructionsList"></ul>
+    </div>
+
+    <button onclick="submitRecipe()">Submit Recipe</button>
+
+    <div class="output-section">
+        <h2>Recipe Details</h2>
+        <div id="recipeOutput"></div>
+    </div>
+
+    <script>
+        let ingredients = [];
+        let instructions = [];
+
+        function addIngredient() {
+            const ingredientInput = document.getElementById('ingredient');
+            const ingredient = ingredientInput.value.trim();
+            if (ingredient) {
+                ingredients.push(ingredient);
+                displayIngredients();
+                ingredientInput.value = '';
+            }
+        }
+
+        function displayIngredients() {
+            const ingredientsList = document.getElementById('ingredientsList');
+            ingredientsList.innerHTML = '';
+            ingredients.forEach((ingredient, index) => {
+                const li = document.createElement('li');
+                li.textContent = ingredient;
+                ingredientsList.appendChild(li);
+            });
+        }
+
+        function addInstruction() {
+            const instructionInput = document.getElementById('instruction');
+            const instruction = instructionInput.value.trim();
+            if (instruction) {
+                instructions.push(instruction);
+                displayInstructions();
+                instructionInput.value = '';
+            }
+        }
+
+        function displayInstructions() {
+            const instructionsList = document.getElementById('instructionsList');
+            instructionsList.innerHTML = '';
+            instructions.forEach((instruction, index) => {
+                const li = document.createElement('li');
+                li.textContent = instruction;
+                instructionsList.appendChild(li);
+            });
+        }
+
+        function submitRecipe() {
+            const recipeName = document.getElementById('recipeName').value.trim();
+            if (!recipeName) {
+                alert('Please enter a recipe name');
+                return;
+            }
+
+            const recipeOutput = document.getElementById('recipeOutput');
+            recipeOutput.innerHTML = `<h3>${recipeName}</h3>`;
+
+            if (ingredients.length > 0) {
+                const ingredientsHeader = document.createElement('h4');
+                ingredientsHeader.textContent = 'Ingredients:';
+                recipeOutput.appendChild(ingredientsHeader);
+
+                const ingredientsUl = document.createElement('ul');
+                ingredients.forEach(ingredient => {
+                    const li = document.createElement('li');
+                    li.textContent = ingredient;
+                    ingredientsUl.appendChild(li);
+                });
+                recipeOutput.appendChild(ingredientsUl);
+            }
+
+            if (instructions.length > 0) {
+                const instructionsHeader = document.createElement('h4');
+                instructionsHeader.textContent = 'Instructions:';
+                recipeOutput.appendChild(instructionsHeader);
+
+                const instructionsUl = document.createElement('ul');
+                instructions.forEach(instruction => {
+                    const li = document.createElement('li');
+                    li.textContent = instruction;
+                    instructionsUl.appendChild(li);
+                });
+                recipeOutput.appendChild(instructionsUl);
+            }
+        }
+    </script>
+</body>
+</html>
