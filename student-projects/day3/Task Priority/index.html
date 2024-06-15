@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Prioritizer</title>
+    <link rel="stylesheet" href="style_mini_3.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Task Prioritizer</h1>
+      <form id="task-form">
+        <input
+          type="text"
+          id="task-input"
+          placeholder="Enter your task"
+          required
+        />
+        <br />
+        <label for="priority">Priority:</label>
+        <select id="priority-select" required>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <br />
+        <button type="submit">Add Task</button>
+      </form>
+      <br />
+      <ul id="task-list"></ul>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        h1 {
+            color: #371a81;
+        }
+        label, select, p {
+            font-size: 1.2em;
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>Greetings!</h1>
+    <form id="translator-form">
+        <label for="languages">Choose a language:</label>
+        <select id="languages" name="languages">
+            <option value="" disabled selected>Select a language</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="jp">Japanese</option>
+        </select>
+    </form>
+    <p id="output"></p>
+
+    <script>
+        document.getElementById('languages').addEventListener('change', function() {
+            var language = this.value;
+            var greeting;
+            
+            switch(language) {
+                case 'en':
+                    greeting = 'Hello!';
+                    break;
+                case 'es':
+                    greeting = '¡Hola!';
+                    break;
+                case 'fr':
+                    greeting = 'Bonjour!';
+                    break;
+                case 'de':
+                    greeting = 'Hallo!';
+                    break;
+                case 'it':
+                    greeting = 'Ciao!';
+                    break;
+                case 'jp':
+                    greeting = 'こんにちは!';
+                    break;
+                default:
+                    greeting = '';
+            }
+            
+            document.getElementById('output').textContent = greeting;
+        });
+    </script>
+</body>
+</html>
