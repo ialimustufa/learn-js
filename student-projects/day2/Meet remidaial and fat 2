@@ -1,0 +1,696 @@
+<!DOCTYPE html>x            
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe To-Do List</title>
+<link rel="stylesheet" href="to.css">
+</head>
+<body>
+<div class="container">
+    <h1>Recipe To-Do List</h1>
+    <div id="categories">
+        <h2>Categories</h2>
+        <select id="categorySelect" onchange="displayRecipes()">
+            <option value="All">All</option>
+        </select>
+    </div>
+    <div id="recipes">
+        <h2>Recipes</h2>
+        <ul id="recipeList"></ul>
+    </div>
+    <div id="ingredients">
+        <h2>Ingredients</h2>
+        <ul id="ingredientList"></ul>
+    </div>
+    <input type="text" id="searchInput" placeholder="Search recipes" oninput="searchRecipes()">
+    <input type="text" id="taskInput" placeholder="Search.....">
+    <button onclick="addTask()">Search</button>
+</div>
+<script>
+    let recipes = [
+    { category: "Breakfast", name: "Scrambled Eggs", ingredients: ["eggs", "milk", "salt", "pepper"] },
+    { category: "Lunch", name: "Caesar Salad", ingredients: ["lettuce", "croutons", "parmesan cheese", "caesar dressing"] },
+    { category: "Dinner", name: "Spaghetti Bolognese", ingredients: ["spaghetti", "ground beef", "tomato sauce", "onion", "garlic"] }
+];cmd'
+
+const categorySelect = document.getElementById("categorySelect");
+const recipeList = document.getElementById("recipeList");
+const ingredientList = document.getElementById("ingredientList");
+
+// Populate category dropdown
+function populateCategoryDropdown() {
+    const categories = Array.from(new Set(recipes.map(recipe => recipe.category)));
+    categories.forEach(category => {
+        const option = document.createElement("option");
+        option.textContent = category;
+        option.value = category;
+        categorySelect.appendChild(option);
+    });
+}
+
+// Display recipes based on selected category
+function displayRecipes() {
+    const selectedCategory = categorySelect.value;
+    recipeList.innerHTML = "";
+
+    if (selectedCategory === "All") {
+        recipes.forEach(recipe => {
+            const li = document.createElement("li");
+            li.textContent = recipe.name;
+            li.addEventListener("click", () => {
+                displayIngredients(recipe.ingredients);
+            });
+            recipeList.appendChild(li);
+        });
+    } else {
+        const filteredRecipes = recipes.filter(recipe => recipe.category === selectedCategory);
+        filteredRecipes.forEach(recipe => {
+            const li = document.createElement("li");
+            li.textContent = recipe.name;
+            li.addEventListener("click", () => {
+                displayIngredients(recipe.ingredients);
+            });
+            recipeList.appendChild(li);
+        });
+    }
+}
+
+// Display ingredients for a given recipe
+function displayIngredients(ingredients) {
+    ingredientList.innerHTML = "";
+    ingredients.forEach(ingredient => {
+        const li = document.createElement("li");
+        li.textContent = ingredient;
+        ingredientList.appendChild(li);
+    });
+}
+
+// Function to add a task
+function addTask() {
+    var taskInput = document.getElementById("taskInput");
+    var taskList = document.getElementById("taskList");
+
+    if (taskInput.value === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    var li = document.createElement("li");
+    li.textContent = taskInput.value;
+
+    var checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.addEventListener("change", function () {
+        if (this.checked) {
+            li.classList.add("completed");
+        } else {
+            li.classList.remove("completed");
+        }
+    });
+
+    var deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", function () {
+        li.remove();
+    });
+
+    li.appendChild(checkBox);
+    li.appendChild(deleteButton);
+    taskList.appendChild(li);
+
+    taskInput.value = "";
+}
+
+// Search recipes based on user input
+function searchRecipes() {
+    const searchInput = document.getElementById("searchInput").value.toLowerCase();
+    recipeList.innerHTML = "";
+
+    recipes.forEach(recipe => {
+        if (recipe.name.toLowerCase().includes(searchInput)) {
+            const li = document.createElement("li");
+            li.textContent = recipe.name;
+            li.addEventListener("click", () => {
+                displayIngredients(recipe.ingredients);
+            });
+            recipeList.appendChild(li);
+        }
+    });
+}
+
+// Initialize
+populateCategoryDropdown();
+displayRecipes();
+</script>
+</body>
+</html>
+
+#2nd api chat applicatiojn
+#css
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#chat-container {
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#chat-box {
+    height: 300px;
+    overflow-y: auto;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #d1e7dd;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #f8d7da;
+}
+
+#chat-input {
+    display: flex;
+    padding: 10px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+#javasc
+document.getElementById('send-button').addEventListener('click', sendMessage);
+document.getElementById('message-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+function sendMessage() {
+    const messageInput = document.getElementById('message-input');
+    const messageText = messageInput.value.trim();
+
+    if (messageText !== '') {
+        addMessage(messageText, 'sent');
+        messageInput.value = '';
+        simulateResponse();
+    }
+}
+
+function addMessage(text, type) {
+    const message = document.createElement('div');
+    message.classList.add('message', type);
+    message.textContent = text;
+    document.getElementById('messages').appendChild(message);
+    message.scrollIntoView();
+}
+
+function simulateResponse() {
+    const responses = [
+        "Hello!",
+        "How can I help you?",
+        "That's interesting!",
+        "I agree.",
+        "Thank you!",
+        "Goodbye!"
+    ];
+    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+    
+    setTimeout(() => {
+        addMessage(randomResponse, 'received');
+    }, 1000);
+}
+
+#html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box">
+            <div id="messages"></div>
+        </div>
+        <div id="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+#3apigallery window
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Window App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        #gallery-container {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        #gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            border: 2px solid #007bff;
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        #lightbox.show {
+            display: flex;
+        }
+
+        #lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="gallery-container">
+        <h1>Gallery</h1>
+        <div id="gallery">
+            <img src="https://via.placeholder.com/100" class="thumbnail" alt="Image 1" onclick="showLightbox('https://via.placeholder.com/800')">
+            <img src="https://via.placeholder.com/100" class="thumbnail" alt="Image 2" onclick="showLightbox('https://via.placeholder.com/801')">
+            <img src="https://via.placeholder.com/100" class="thumbnail" alt="Image 3" onclick="showLightbox('https://via.placeholder.com/802')">
+            <img src="https://via.placeholder.com/100" class="thumbnail" alt="Image 4" onclick="showLightbox('https://via.placeholder.com/803')">
+            <img src="https://via.placeholder.com/100" class="thumbnail" alt="Image 5" onclick="showLightbox('https://via.placeholder.com/804')">
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <span id="lightbox-close" onclick="hideLightbox()">&times;</span>
+        <img src="" alt="Expanded view">
+    </div>
+
+    <script>
+        function showLightbox(imageUrl) {
+            const lightboxImage = document.querySelector('#lightbox img');
+            lightboxImage.src = imageUrl;
+            document.getElementById('lightbox').classList.add('show');
+        }
+
+        function hideLightbox() {
+            document.getElementById('lightbox').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
+#4api to do list
+#html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Notes App</h1>
+        <div class="note-form">
+            <input type="text" id="noteTitle" placeholder="Title">
+            <textarea id="noteContent" placeholder="Content"></textarea>
+            <button id="addNoteBtn">Add Note</button>
+        </div>
+        <div id="notesList"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
+#css
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.note-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-form input,
+.note-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.note-form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.note-form button:hover {
+    background-color: #218838;
+}
+
+#notesList {
+    margin-top: 20px;
+}
+
+.note {
+    padding: 10px;
+    background: #e9ecef;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.note h3 {
+    margin: 0 0 10px 0;
+}
+
+.note button {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.note button:hover {
+    background-color: #c82333;
+}
+#js
+document.addEventListener('DOMContentLoaded', () => {
+    const notesList = document.getElementById('notesList');
+    const noteTitle = document.getElementById('noteTitle');
+    const noteContent = document.getElementById('noteContent');
+    const addNoteBtn = document.getElementById('addNoteBtn');
+
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+    const renderNotes = () => {
+        notesList.innerHTML = '';
+        notes.forEach((note, index) => {
+            const noteElement = document.createElement('div');
+            noteElement.classList.add('note');
+            noteElement.innerHTML = `
+                <h3>${note.title}</h3>
+                <p>${note.content}</p>
+                <button onclick="deleteNote(${index})">Delete</button>
+            `;
+            notesList.appendChild(noteElement);
+        });
+    };
+
+    const addNote = () => {
+        const title = noteTitle.value;
+        const content = noteContent.value;
+        if (title && content) {
+            notes.push({ title, content });
+            localStorage.setItem('notes', JSON.stringify(notes));
+            renderNotes();
+            noteTitle.value = '';
+            noteContent.value = '';
+        }
+    };
+
+    window.deleteNote = (index) => {
+        notes.splice(index, 1);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        renderNotes();
+    };
+
+    addNoteBtn.addEventListener('click', addNote);
+
+    renderNotes();
+});
+#5api quizz app
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="quiz-container">
+        <div id="quiz">
+            <h2 id="question">Question text</h2>
+            <div class="answer-container">
+                <button class="answer" onclick="selectAnswer(0)">Answer 1</button>
+                <button class="answer" onclick="selectAnswer(1)">Answer 2</button>
+                <button class="answer" onclick="selectAnswer(2)">Answer 3</button>
+                <button class="answer" onclick="selectAnswer(3)">Answer 4</button>
+            </div>
+            <button id="next-button" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+    <script src="Script.js"></script>
+</body>
+</html>
+#css
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+#quiz-container {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+}
+
+#quiz {
+    padding: 20px;
+}
+
+.answer-container {
+    margin-top: 20px;
+}
+
+.answer {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.answer:hover {
+    background-color: #ddd;
+}
+
+#next-button {
+    display: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#next-button:hover {
+    background-color: #0056b3;
+}
+#js
+const quizData = [
+    {
+        question: "What is the capital of France?",
+        answers: ["Berlin", "Madrid", "Paris", "Lisbon"],
+        correct: 2
+    },
+    {
+        question: "Which language is used for web apps?",
+        answers: ["Python", "JavaScript", "C++", "Java"],
+        correct: 1
+    },
+    {
+        question: "Who is the President of the US in 2021?",
+        answers: ["Donald Trump", "Joe Biden", "Barack Obama", "George Bush"],
+        correct: 1
+    },
+    {
+        question: "What does HTML stand for?",
+        answers: ["HyperText Markup Language", "HyperText Markdown Language", "HyperLoop Machine Language", "Helicopters Terminals Motorboats Lamborginis"],
+        correct: 0
+    },
+    {
+        question: "What year was JavaScript launched?",
+        answers: ["1996", "1995", "1994", "None of the above"],
+        correct: 1
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuiz() {
+    const currentQuizData = quizData[currentQuestion];
+    document.getElementById('question').innerText = currentQuizData.question;
+    const answerButtons = document.querySelectorAll('.answer');
+    answerButtons.forEach((button, index) => {
+        button.innerText = currentQuizData.answers[index];
+        button.classList.remove('correct', 'incorrect');
+    });
+    document.getElementById('next-button').style.display = 'none';
+}
+
+function selectAnswer(selectedAnswer) {
+    const currentQuizData = quizData[currentQuestion];
+    const answerButtons = document.querySelectorAll('.answer');
+    answerButtons.forEach((button, index) => {
+        button.classList.add(index === currentQuizData.correct ? 'correct' : 'incorrect');
+    });
+    if (selectedAnswer === currentQuizData.correct) {
+        score++;
+    }
+    document.getElementById('next-button').style.display = 'block';
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+        loadQuiz();
+    } else {
+        document.getElementById('quiz').innerHTML = `
+            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+            <button onclick="location.reload()">Reload</button>
+        `;
+    }
+}
+
+window.onload = loadQuiz;
+
+
