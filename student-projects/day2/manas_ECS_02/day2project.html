@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .form-container, #recipes-container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #262827;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3d3b37;
+        }
+
+        #recipes-list button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #recipes-list button:hover {
+            background-color: #0056b3;
+        }
+
+        .recipe-details {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recipe Manager</h1>
+    <div class="form-container">
+        <h2>Add a New Recipe</h2>
+        <form id="recipe-form">
+            <label for="title">Recipe Title:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" name="ingredients" required></textarea>
+            
+            <label for="instructions">Instructions:</label>
+            <textarea id="instructions" name="instructions" required></textarea>
+            
+            <button type="submit">Add Recipe</button>
+        </form>
+    </div>
+    <div id="recipes-container">
+        <h2>Recipes</h2>
+        <div id="recipes-list"></div>
+    </div>
+    <script>
+        document.getElementById('recipe-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const instructions = document.getElementById('instructions').value;
+            
+            addRecipe(title, ingredients, instructions);
+            
+            document.getElementById('recipe-form').reset();
+        });
+
+        function addRecipe(title, ingredients, instructions) {
+            const recipesList = document.getElementById('recipes-list');
+            
+            const recipeButton = document.createElement('button');
+            recipeButton.innerText = title;
+            recipeButton.addEventListener('click', function() {
+                displayRecipeDetails(title, ingredients, instructions);
+            });
+            
+            recipesList.appendChild(recipeButton);
+        }
+
+        function displayRecipeDetails(title, ingredients, instructions) {
+            const recipesContainer = document.getElementById('recipes-container');
+            
+            const existingDetails = document.querySelector('.recipe-details');
+            if (existingDetails) {
+                existingDetails.remove();
+            }
+            
+            const recipeDetails = document.createElement('div');
+            recipeDetails.classList.add('recipe-details');
+            
+            const recipeTitle = document.createElement('h3');
+            recipeTitle.innerText = title;
+            recipeDetails.appendChild(recipeTitle);
+            
+            const recipeIngredients = document.createElement('p');
+            recipeIngredients.innerHTML = `<strong>Ingredients:</strong><br>${ingredients.replace(/\n/g, '<br>')}`;
+            recipeDetails.appendChild(recipeIngredients);
+            
+            const recipeInstructions = document.createElement('p');
+            recipeInstructions.innerHTML = `<strong>Instructions:</strong><br>${instructions.replace(/\n/g, '<br>')}`;
+            recipeDetails.appendChild(recipeInstructions);
+            
+            recipesContainer.appendChild(recipeDetails);
+        }
+    </script>
+</body>
+</html>
