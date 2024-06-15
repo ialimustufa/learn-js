@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Ingredient List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s;
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        #ingredient-display {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dish Ingredient List</h1>
+        <div class="input-section">
+            <input type="text" id="dish-name" placeholder="Enter dish name">
+            <input type="text" id="ingredients" placeholder="Enter ingredients, separated by commas">
+            <button id="add-dish-button">Add Dish</button>
+        </div>
+        <ul id="dish-list"></ul>
+        <div id="ingredient-display"></div>
+    </div>
+    <script>
+        document.getElementById('add-dish-button').addEventListener('click', function() {
+            const dishName = document.getElementById('dish-name').value.trim();
+            const ingredients = document.getElementById('ingredients').value.split(',').map(ing => ing.trim());
+
+            if (dishName && ingredients.length > 0 && ingredients[0] !== '') {
+                addDish(dishName, ingredients);
+                document.getElementById('dish-name').value = '';
+                document.getElementById('ingredients').value = '';
+            } else {
+                alert('Please enter a valid dish name and at least one ingredient.');
+            }
+        });
+
+        const dishes = {};
+
+        function addDish(dishName, ingredients) {
+            dishes[dishName] = ingredients;
+            updateDishList();
+        }
+
+        function updateDishList() {
+            const dishList = document.getElementById('dish-list');
+            dishList.innerHTML = '';
+
+            for (const dish in dishes) {
+                const li = document.createElement('li');
+                li.textContent = dish;
+                li.addEventListener('click', function() {
+                    displayIngredients(dish);
+                });
+                dishList.appendChild(li);
+            }
+        }
+
+        function displayIngredients(dishName) {
+            const ingredientDisplay = document.getElementById('ingredient-display');
+            ingredientDisplay.textContent = `Ingredients: ${dishes[dishName].join(', ')}`;
+        }
+    </script>
+</body>
+</html>
