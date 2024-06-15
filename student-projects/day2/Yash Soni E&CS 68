@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .recipe-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .recipe-button:hover {
+            background-color: #45a049;
+        }
+        .recipe-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Recipe Book</h1>
+    
+    <h2>Add a New Recipe</h2>
+    <form id="recipeForm">
+        <label for="recipeName">Recipe Name:</label><br>
+        <input type="text" id="recipeName" name="recipeName" required><br><br>
+        
+        <label for="ingredients">Ingredients:</label><br>
+        <textarea id="ingredients" name="ingredients" rows="5" required></textarea><br><br>
+        
+        <label for="procedure">Procedure:</label><br>
+        <textarea id="procedure" name="procedure" rows="5" required></textarea><br><br>
+        
+        <button type="button" onclick="createRecipe()">Create Recipe</button>
+    </form>
+    
+    <h2>Recipes</h2>
+    <div id="recipesContainer">
+        <!-- Recipe buttons will appear here -->
+    </div>
+
+    <script>
+        function createRecipe() {
+            const recipeName = document.getElementById('recipeName').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const procedure = document.getElementById('procedure').value;
+
+            if (recipeName && ingredients && procedure) {
+                const recipeButton = document.createElement('button');
+                recipeButton.className = 'recipe-button';
+                recipeButton.innerText = recipeName;
+                recipeButton.onclick = function() {
+                    const detailsDiv = this.nextElementSibling;
+                    detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+                };
+
+                const recipeDetails = document.createElement('div');
+                recipeDetails.className = 'recipe-details';
+                recipeDetails.innerHTML = <strong>Ingredients:</strong><br>${ingredients.replace(/\n/g, '<br>')}<br><br><strong>Procedure:</strong><br>${procedure.replace(/\n/g, '<br>')};
+
+                const recipesContainer = document.getElementById('recipesContainer');
+                recipesContainer.appendChild(recipeButton);
+                recipesContainer.appendChild(recipeDetails);
+
+                // Clear the form fields
+                document.getElementById('recipeForm').reset();
+            } else {
+                alert('Please fill out all fields');
+            }
+        }
+    </script>
+
+</body>
+</html>
