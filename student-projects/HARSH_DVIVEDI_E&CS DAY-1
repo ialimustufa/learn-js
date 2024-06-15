@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rom-Com Series Task Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        select, button {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        #task {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rom-Com Series Task Simulator</h1>
+        <label for="character">Choose a character:</label>
+        <select id="character">
+            <option value="Jess Day (New Girl)">Jess Day (New Girl)</option>
+            <option value="Ted Mosby (How I Met Your Mother)">Ted Mosby (How I Met Your Mother)</option>
+            <option value="Rachel Green (Friends)">Rachel Green (Friends)</option>
+            <option value="Nick Miller (New Girl)">Nick Miller (New Girl)</option>
+            <option value="Lorelai Gilmore (Gilmore Girls)">Lorelai Gilmore (Gilmore Girls)</option>
+        </select>
+        <br>
+        <button onclick="startTask()">Start Task</button>
+        <p id="task"></p>
+    </div>
+
+    <script>
+        function startTask() {
+            const character = document.getElementById('character').value;
+            const tasks = {
+                'Jess Day (New Girl)': 'Plan a quirky surprise party.',
+                'Ted Mosby (How I Met Your Mother)': 'Design the perfect wedding.',
+                'Rachel Green (Friends)': 'Organize a fashion show.',
+                'Nick Miller (New Girl)': 'Write a hilarious novel.',
+                'Lorelai Gilmore (Gilmore Girls)': 'Host a coffee-themed festival.'
+            };
+            document.getElementById('task').innerText = `Task: ${tasks[character]}`;
+        }
+    </script>
+</body>
+</html>
