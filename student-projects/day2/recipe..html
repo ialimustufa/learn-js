@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Book</h1>
+        <div class="form-container">
+            <h2 id="subHeading">Add New Recipe</h2>
+            <form id="recipeForm">
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" required>
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" required></textarea>
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+        <div class="recipe-list">
+            <h2>Recipes</h2>
+            <ul id="recipeList"></ul>
+        </div>
+        <div id="recipeDetails" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalIngredients"></p>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+    <script src="recipe.js"></script>
+</body>
+</html>
