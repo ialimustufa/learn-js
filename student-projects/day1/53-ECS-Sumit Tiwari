@@ -1,0 +1,59 @@
+function add(x, y) {
+return x + y;
+}
+
+function subtract(x, y) {
+return x - y;
+}
+
+function multiply(x, y) {
+return x * y;
+}
+
+function divide(x, y) {
+return x / y;
+}
+
+function moduler(x, y) {
+return x % y;
+}
+
+function power(x, y) {
+return Math.pow(x, y);
+}
+
+console.log(&quot;Select the option:&quot;);
+console.log(&quot;1. Addition&quot;);
+console.log(&quot;2. Subtraction&quot;);
+console.log(&quot;3. Multiplication&quot;);
+console.log(&quot;4. Division&quot;);
+console.log(&quot;5. Power&quot;);
+console.log(&quot;6. Moduler&quot;);
+console.log(&quot;7. Exit&quot;);
+
+const no1 = parseInt(prompt(&quot;Enter the first number -&gt;&quot;));
+const no2 = parseInt(prompt(&quot;Enter the second number -&gt;&quot;));
+
+while (true) {
+const choice = parseInt(prompt(&quot;Enter the choice from (1/2/3/4/5/6/7) --&gt;&quot;));
+if (choice &gt;= 1 &amp;&amp; choice &lt;= 7) {
+if (choice == 1) {
+console.log(&quot;Addition of two numbers&quot;, no1, &quot;and&quot;, no2, &quot;is -&gt;&quot;, add(no1, no2));
+} else if (choice == 2) {
+console.log(&quot;Subtraction of two numbers&quot;, no1, &quot;and&quot;, no2, &quot;is -&gt;&quot;, subtract(no1, no2));
+} else if (choice == 3) {
+console.log(&quot;Multiplication of two numbers&quot;, no1, &quot;and&quot;, no2, &quot;is -&gt;&quot;, multiply(no1, no2));
+} else if (choice == 4) {
+console.log(&quot;Division of two numbers&quot;, no1, &quot;and&quot;, no2, &quot;is -&gt;&quot;, divide(no1, no2));
+} else if (choice == 5) {
+console.log(&quot;Power of&quot;, no1, &quot;to the&quot;, no2, &quot;is -&gt;&quot;, power(no1, no2));
+} else if (choice == 6) {
+console.log(&quot;Modulus of two numbers&quot;, no1, &quot;and&quot;, no2, &quot;is -&gt;&quot;, moduler(no1, no2));
+} else if (choice == 7) {
+console.log(&quot;Thank you, visit again&quot;);
+break;
+
+}
+} else {
+console.log(&quot;Invalid choice, try again&quot;);
+}
