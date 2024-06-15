@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 Task | Adarsh singh </title>
+    <style>
+      * {
+        padding: 0 20px;
+        margin: 0;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      div {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+      }
+      button {
+        width: 100%;
+        height: 50px;
+        cursor: pointer;
+      }
+      input {
+        width: 100%;
+        margin: 20px 0px;
+        height: 40px;
+        padding-inline: 20px;
+      }
+      p::before {
+        content: "Answer is : ";
+      }
+      p {
+        text-align: center;
+        margin-top: 20px;
+      }
+      h1 {
+        text-transform: uppercase;
+        font-size: clamp(20px, 4vw, 34px);
+        color: rgb(0, 9, 128);
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple Calculeter</h1>
+    <div>
+      <input type="number" id="num1" placeholder="Enter first Num" />
+      <input type="number" id="num2" placeholder="Enter Second Num" />
+    </div>
+    <div>
+      <button onclick="add()">Add</button>
+      <button onclick="sub()">Sunstraction</button>
+      <button onclick="mul()">Multiplication</button>
+      <button onclick="div()">Division</button>
+    </div>
+    <p id="ans">--</p>
+  </body>
+  <script>
+    var num1, num2, ans;
+    function getIds() {
+      num1 = parseInt(document.getElementById("num1").value);
+      num2 = parseInt(document.getElementById("num2").value);
+      ans = document.getElementById("ans");
+    }
+    function add() {
+      getIds();
+      answer = num1 + num2;
+      ans.innerHTML = answer;
+    }
+    function sub() {
+      getIds();
+      answer = num1 - num2;
+      ans.innerHTML = answer;
+    }
+    function mul() {
+      getIds();
+      answer = num1 * num2;
+      ans.innerHTML = answer;
+    }
+    function div() {
+      getIds();
+      answer = num1 / num2;
+      ans.innerHTML = answer;
+    }
+  </script>
+</html>

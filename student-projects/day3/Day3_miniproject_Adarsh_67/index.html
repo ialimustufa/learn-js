@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Prioritizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, select, button {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li.high {
+            border-left: 5px solid red;
+        }
+
+        li.medium {
+            border-left: 5px solid orange;
+        }
+
+        li.low {
+            border-left: 5px solid green;
+        }
+
+        li.done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .task-actions button {
+            margin-left: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .task-actions .remove {
+            color: red;
+        }
+
+        .task-actions .done {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Prioritizer</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Enter your task" required>
+            <select id="priority-select" required>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const taskForm = document.getElementById('task-form');
+            const taskInput = document.getElementById('task-input');
+            const prioritySelect = document.getElementById('priority-select');
+            const taskList = document.getElementById('task-list');
+
+            taskForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                addTask(taskInput.value, prioritySelect.value);
+                taskInput.value = '';
+            });
+
+            taskList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('remove')) {
+                    removeTask(e.target.parentElement.parentElement);
+                } else if (e.target.classList.contains('done')) {
+                    toggleDone(e.target.parentElement.parentElement);
+                }
+            });
+
+            function addTask(task, priority) {
+                const li = document.createElement('li');
+                li.className = priority;
+                li.innerHTML = `
+                    <span>${task}</span>
+                    <div class="task-actions">
+                        <button class="done">✓</button>
+                        <button class="remove">✕</button>
+                    </div>
+                `;
+                taskList.appendChild(li);
+            }
+
+            function removeTask(task) {
+                taskList.removeChild(task);
+            }
+
+            function toggleDone(task) {
+                task.classList.toggle('done');
+            }
+        });
+    </script>
+</body>
+</html>
