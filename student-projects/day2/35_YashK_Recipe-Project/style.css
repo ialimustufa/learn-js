@@ -1,0 +1,78 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+
+}
+h1{
+    color: orange;
+    font-weight: bold;
+    font-size: 4rem;
+    /* border-bottom: 2px solid sandybrown; */
+}
+h3{
+    font-family:'Times New Roman', Times, serif;
+    color: indianred;
+    font-size: 1.5rem;
+    font-weight:1000;
+}
+
+label{
+    font-size: 1.5rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 1.5rem;
+    color: darkslategrey;
+}
+.boxInput{
+    width: 15rem;
+    height: 2rem;
+    align-content:baseline;
+}
+
+
+button{
+    margin: 2rem 0 2rem 0;
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 550;
+    background: rgb(225, 149, 94);
+    background-color: khaki;
+    border-radius: 1rem;
+    padding: 0.8em 1em 0.8em 1em;
+    /* padding-inline: 4em; */
+    /* padding-block: 1em; */
+
+    }
+#ingredientList>*,#recipeInstructions{
+    font-size: 1.5em;
+    color:salmon;
+    /* list-style: none; */
+}
+
+#recipe_container{
+
+    /* border: 2px solid red; */
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(10em, 25em));
+    
+}
+
+.recipe-card{
+   border: 2px solid grey;
+   border-radius: 0.4em; 
+   font-size: 1.5rem;
+   padding: 0.8em;
+
+}
+#recipeDetails{
+    margin-top: 1rem;
+    text-align: left;
+    padding-inline: 2em;
+    border: 1px solid rgba(128, 128, 128, 0.769);
+   border-radius: 0.4em; 
+
+}
+.hidden{
+    display: none;
+}   
