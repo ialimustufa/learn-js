@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Book</h1>
+        <div class="form-container">
+            <h2 id="subHeading">Add New Recipe</h2>
+            <form id="recipeForm">
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" required>
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" required></textarea>
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+        <div class="recipe-list">
+            <h2>Recipes</h2>
+            <ul id="recipeList"></ul>
+        </div>
+        <div id="recipeDetails" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalIngredients"></p>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+#script.js
+
+// script.js
+
+const recipeForm = document.getElementById('recipeForm');
+const recipeList = document.getElementById('recipeList');
+const modalTitle = document.getElementById('modalTitle');
+const modalIngredients = document.getElementById('modalIngredients');
+const modalDescription = document.getElementById('modalDescription');
+const modal = document.getElementById('recipeDetails');
+const closeModal = document.getElementsByClassName('close')[0];
+
+let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+
+// Function to add a new recipe
+function addRecipe(event) {
+    event.preventDefault();
+
+    const recipeName = document.getElementById('recipeName').value;
+    const ingredients = document.getElementById('ingredients').value;
+    const description = document.getElementById('description').value;
+
+    const recipe = { name: recipeName, ingredients, description };
+    recipes.push(recipe);
+    localStorage.setItem('recipes', JSON.stringify(recipes));
+    displayRecipes();
+    recipeForm.reset();
+}
+
+// Function to display recipes
+function displayRecipes() {
+    recipeList.innerHTML = '';
+    recipes.forEach((recipe, index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = recipe.name;
+        listItem.addEventListener('click', () => showRecipeDetails(index));
+        recipeList.appendChild(listItem);
+    });
+}
+
+// Function to show recipe details in modal
+function showRecipeDetails(index) {
+    const recipe = recipes[index];
+    modalTitle.textContent = recipe.name;
+    modalIngredients.textContent = 'Ingredients: ' + recipe.ingredients;
+    modalDescription.textContent = 'Description: ' + recipe.description;
+    modal.style.display = 'block';
+}
+
+// Event to close the modal
+closeModal.onclick = function() {
+    modal.style.display = 'none';
+};
+
+// Event to close the modal if clicked outside of it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
+
+// Event to handle form submission
+recipeForm.addEventListener('submit', addRecipe);
+
+// Display the initial list of recipes on page load
+window.onload = displayRecipes;
