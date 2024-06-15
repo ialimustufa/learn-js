@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dropdown Menu Using Select Tab</title>
+    <script src="task1.js"></script>
+    <style>
+        h1{
+        text-align: centre;
+        }h1
+        </style>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <b>Select your favourite Team</b>
+    <select id="teamList" onchange="updateTeam()">
+        <option value="">---Choose Team---</option>
+        <option value="India">India</option>
+        <option value="Australia">Australia</option>
+    </select>
+    <p>Your selected Team is: <input type="text" id="selectedTeam" size="20" readonly></p>
+
+    <b>Select your favourite Player</b>
+    <select id="playerList" onchange="updatePlayer()">
+        <option value="">---Choose Player---</option>
+    </select>
+    <p>Your selected Player is: <input type="text" id="selectedPlayer" size="20" readonly></p>
+
+    <script>
+        function updateTeam() {
+            var teamList = document.getElementById("teamList");
+            var selectedTeam = teamList.options[teamList.selectedIndex].value;
+            document.getElementById("selectedTeam").value = selectedTeam;
+
+            var playerList = document.getElementById("playerList");
+            playerList.innerHTML = '<option value="">---Choose Player---</option>'; // Reset player options
+
+            if (selectedTeam === "India") {
+                playerList.innerHTML += '<option value="Virat Kohli">Virat Kohli</option>';
+                playerList.innerHTML += '<option value="MS Dhoni">MS Dhoni</option>';
+                playerList.innerHTML += '<option value="Sachin Tendulkar">Sachin Tendulkar';
+            } else if (selectedTeam === "Australia") {
+                playerList.innerHTML += '<option value="Steve Smith">Steve Smith</option>';
+                playerList.innerHTML += '<option value="David Warner">David Warner</option>';
+            }
+        }
+
+        function updatePlayer() {
+            var playerList = document.getElementById("playerList");
+            var selectedPlayer = playerList.options[playerList.selectedIndex].value;
+            document.getElementById("selectedPlayer").value = selectedPlayer;
+        }
+    </script>
+</body>
+
+</html>
