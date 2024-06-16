@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 24px);
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: rebeccapurple;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkmagenta;
+        }
+
+        .recipeList {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .recipeInfo {
+            color: rebeccapurple;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid rebeccapurple;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .recipeInfo:hover {
+            background-color: rebeccapurple;
+            color: white;
+        }
+
+        .recipeLoad {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .recipeLoad h3 {
+            color: rebeccapurple;
+            margin-bottom: 10px;
+        }
+
+        .recipeLoad p {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Recipe Inputs -->
+        <h1 class="title">Recipe Maker</h1>
+
+        <form id="recipeMakerForm">
+            <label for="recipeName">Enter Recipe Name:</label>
+            <input id="recipeName" type="text" required><br><br>
+            <label for="recipeIngredients">Enter the Ingredients (comma separated):</label>
+            <input id="recipeIngredients" type="text" required><br><br>
+            <label for="recipeMakingSteps">Enter the Process:</label>
+            <textarea id="recipeMakingSteps" rows="4" class="largeBox" required></textarea><br><br>
+            <input type="submit" id="submit" value="Submit">
+        </form>
+        <br><hr>
+
+        <h2 class="title">Recipe List</h2>
+        <div id="recipeList" class="recipeList">
+            <!-- Saved Recipes will go here -->
+        </div>
+        <br><hr>
+
+        <div id="recipeLoad" class="recipeLoad">
+            <!-- Loading a Saved Recipe will display here -->
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
