@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSeriesTaskSimulator</title>
+    <script src="WebSeriesTask.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .styled-select {
+            display: inline-block; 
+            text-align: left; 
+        }
+
+        #demo {
+            margin-top: 20px; 
+            text-align: left; 
+            display: inline-block; 
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <h2>Web Series Task Simulator</h2>
+        <div class="styled-select">
+            <select id="select" name="select" onchange="selectTask(this.value)">
+                <option value="Task1">Movie1</option>
+                <option value="Task2">Movie2</option>
+                <option value="Task3">Movie3</option>
+                <option value="Task4">Movie4</option>
+                <option value="Task5">Movie5</option>
+            </select>
+        </div>
+    </div>
+    <div id="demo"></div>
+</body>
+</html>
