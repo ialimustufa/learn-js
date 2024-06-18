@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    border: border-box;
+}
+
+body { 
+    background-color: rgb(196, 230, 248);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 50%;
+    margin: 20px auto;
+    background: rgba(25, 89, 121, 0.7);
+    padding: 20px;
+    border: 2px solid rgb(14, 69, 97);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
+}
+
+.title {
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+}
+
+label {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    background-color: #f1f1f1;
+    padding: 12px;
+    border: 1px solid rgb(14, 69, 97);
+    border-radius: 15px;
+    width: calc(100% - 20px);
+    }
+
+.largeBox {
+    height: 30px;
+}
+
+.button{
+    display: flex;
+    justify-content: end;
+}
+
+input[type="submit"] {
+    background-color: rgb(14, 69, 97);
+    color: white;
+    border: 2px solid rgb(225, 243, 252);
+    font-size: large;
+    font-weight: bold;
+    width: 20%;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;  
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(225, 243, 252);
+    color: black;
+    border: 2px solid rgb(14, 69, 97);
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+}
+
+.recipeList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 50px 20px 50px;
+}
+
+.recipeInfo {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(225, 243, 252,0.5);
+    color: black;
+    border: 2px solid rgb(14, 69, 97);
+    border-radius: 15px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.recipeInfo:hover {
+    background-color: rgba(14, 69, 97,0.5);
+    color: white;
+    border: 2px solid rgb(225, 243, 252);
+}
+
+.recipeLoad {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.recipeLoad h3 { 
+    color: white;
+    margin-bottom: 10px;
+}
+
+.recipeLoad p {
+    background: #f1f1f1; 
+    padding: 10px; 
+    border: 1px solid rgb(14, 69, 97);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
