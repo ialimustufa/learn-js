@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.calculator {
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    border-radius: 5px;
+}
+.input{
+    display: flex;
+    margin: 5px;
+
+}
+
+.buttons button {
+    padding: 8px 15px;
+    margin: 2px;
+    border-radius: 5px;
+    border: none;
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <h1>Calculator</h1>
+      <div class="input">
+        <input type="number" id="num1" placeholder="Enter first number" />
+        <input type="number" id="num2" placeholder="Enter second number" />
+      </div>
+      <div class="buttons">
+        <button onclick="calculate('add')">Add</button>
+        <button onclick="calculate('subtract')">Subtract</button>
+        <button onclick="calculate('multiply')">Multiply</button>
+        <button onclick="calculate('divide')">Divide</button>
+        <button onclick="calculate('modulo')">Modulo</button>
+      </div>
+      <p id="result"></p>
+    </div>
+    <script>
+      function calculate(operation) {
+    const num1 = parseFloat(document.getElementById("num1").value);
+    const num2 = parseFloat(document.getElementById("num2").value);
+    let result;
+
+    if (isNaN(num1) || isNaN(num2)) {
+        result = 'Please enter valid numbers.';
+    } else {
+        switch (operation) {
+            case 'add':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                if (num2 === 0) {
+                    result = 'Cannot divide by zero.';
+                } else {
+                    result = num1 / num2;
+                }
+                break;
+            case 'modulo':
+                result = num1 % num2;
+                break;
+            default:
+                result = 'Invalid operation.';
+        }
+    }
+
+    document.getElementById("result").innerHTML = 'Result: ' + result;
+}
+    </script>
+  </body>
+</html>
