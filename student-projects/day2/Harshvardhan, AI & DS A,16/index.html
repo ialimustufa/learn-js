@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Recipe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .recipe {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a New Recipe</h1>
+    <form id="recipe-form">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" required><br><br>
+        
+        <label for="recipe-instructions">Instructions:</label><br>
+        <textarea id="recipe-instructions" rows="4" cols="50" required></textarea><br><br>
+        
+        <label for="recipe-ingredients">Ingredients (separated by commas):</label><br>
+        <textarea id="recipe-ingredients" rows="4" cols="50" required></textarea><br><br>
+        
+        <button type="button" onclick="addRecipe()">Add Recipe</button>
+    </form>
+    
+    <h2>Recipes:</h2>
+    <div id="recipes"></div>
+    
+    <script>
+        function addRecipe() {
+            // Get form values
+            const name = document.getElementById('recipe-name').value;
+            const instructions = document.getElementById('recipe-instructions').value;
+            const ingredients = document.getElementById('recipe-ingredients').value.split(',');
+
+            // Create a new recipe element
+            const recipeDiv = document.createElement('div');
+            recipeDiv.classList.add('recipe');
+
+            const recipeName = document.createElement('h3');
+            recipeName.textContent = name;
+
+            const recipeInstructions = document.createElement('p');
+            recipeInstructions.textContent = 'Instructions: ' + instructions;
+
+            const recipeIngredients = document.createElement('ul');
+            ingredients.forEach(ingredient => {
+                const li = document.createElement('li');
+                li.textContent = ingredient.trim();
+                recipeIngredients.appendChild(li);
+            });
+
+            // Append elements to the recipe div
+            recipeDiv.appendChild(recipeName);
+            recipeDiv.appendChild(recipeInstructions);
+            recipeDiv.appendChild(recipeIngredients);
+
+            // Append the recipe div to the recipes container
+            document.getElementById('recipes').appendChild(recipeDiv);
+
+            // Clear form
+            document.getElementById('recipe-form').reset();
+        }
+    </script>
+</body>
+</html>
