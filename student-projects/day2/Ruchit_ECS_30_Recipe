@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .recipe-finder {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        .recipe-finder input, .recipe-finder button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .recipe {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="recipe-finder">
+        <input type="text" id="ingredients" placeholder="Enter ingredients (comma separated)">
+        <button onclick="findRecipes()">Find Recipes</button>
+        <div id="recipes"></div>
+    </div>
+
+    <script>
+        const recipes = [
+            {
+                title: "Spaghetti Bolognese",
+                ingredients: ["spaghetti", "ground beef", "tomato sauce", "onion", "garlic"],
+                image: "https://via.placeholder.com/150"
+            },
+            {
+                title: "Chicken Salad",
+                ingredients: ["chicken", "lettuce", "tomato", "cucumber", "olive oil"],
+                image: "https://via.placeholder.com/150"
+            },
+            {
+                title: "Pancakes",
+                ingredients: ["flour", "milk", "egg", "butter", "sugar"],
+                image: "https://via.placeholder.com/150"
+            }
+        ];
+
+        function findRecipes() {
+            const inputIngredients = document.getElementById('ingredients').value.toLowerCase().split(',').map(ing => ing.trim());
+            const matchedRecipes = recipes.filter(recipe =>
+                inputIngredients.every(ing => recipe.ingredients.includes(ing))
+            );
+
+            const recipesDiv = document.getElementById('recipes');
+            recipesDiv.innerHTML = '';
+
+            if (matchedRecipes.length > 0) {
+                matchedRecipes.forEach(recipe => {
+                    const recipeDiv = document.createElement('div');
+                    recipeDiv.classList.add('recipe');
+                    recipeDiv.innerHTML = `
+                        <h3>${recipe.title}</h3>
+                        <img src="${recipe.image}" alt="${recipe.title}" style="width:100%; height: auto;">
+                        <p>Ingredients: ${recipe.ingredients.join(', ')}</p>
+                    `;
+                    recipesDiv.appendChild(recipeDiv);
+                });
+            } else {
+                recipesDiv.innerHTML = '<p>No recipes found with the given ingredients.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
