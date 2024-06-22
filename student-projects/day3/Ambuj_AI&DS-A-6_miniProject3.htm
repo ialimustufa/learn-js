@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Prioritizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: rgb(90, 232, 232);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .task-form {
+            margin: 20px;
+        }
+
+        input,
+        select,
+        button {
+            margin: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px;
+            background-color: rgb(224, 181, 90);
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Task Prioritizer</h1>
+    <div class="task-form">
+        <input type="text" id="taskName" placeholder="Enter task name">
+        <select id="priority">
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+        </select>
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <ul id="taskList"></ul>
+    <script>
+        function addTask() {
+            const taskName = document.getElementById('taskName').value;
+            const priority = document.getElementById('priority').value;
+
+            if (taskName.trim() === '') {
+                alert('Please enter a task name.');
+                return;
+            }
+
+            const taskList = document.getElementById('taskList');
+            const taskItem = document.createElement('li');
+            taskItem.textContent = `${taskName} (Priority: ${priority})`;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                taskItem.remove();
+            };
+            taskItem.appendChild(deleteButton);
+
+            taskList.appendChild(taskItem);
+
+            document.getElementById('taskName').value = '';
+        }
+    </script>
+</body>
+
+</html>
