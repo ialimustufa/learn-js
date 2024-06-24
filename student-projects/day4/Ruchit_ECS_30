@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #eef2f3;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .user-info {
+            margin-top: 20px;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>User Information Form</h1>
+    <div class="form-container">
+        <form id="userInfoForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+            <label for="hobbies">Hobbies:</label>
+            <textarea id="hobbies" name="hobbies" rows="3"></textarea>
+            <label for="achievements">Achievements:</label>
+            <textarea id="achievements" name="achievements" rows="3"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="user-info" id="displayInfo"></div>
+
+    <script>
+        const userInfoForm = document.getElementById('userInfoForm');
+        const displayInfo = document.getElementById('displayInfo');
+
+        userInfoForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const birthdate = document.getElementById('birthdate').value;
+            const hobbies = document.getElementById('hobbies').value;
+            const achievements = document.getElementById('achievements').value;
+
+            // Display collected information
+            displayInfo.innerHTML = `
+                <h2>User Information:</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Phone Number:</strong> ${phone}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Age:</strong> ${age}</p>
+                <p><strong>Birthdate:</strong> ${birthdate}</p>
+                <p><strong>Hobbies:</strong> ${hobbies}</p>
+                <p><strong>Achievements:</strong> ${achievements}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
