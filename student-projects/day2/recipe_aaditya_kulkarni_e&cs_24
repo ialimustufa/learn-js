@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Submission Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .recipe-display {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .recipe-display h2 {
+            margin-top: 0;
+        }
+        .recipe-display pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Submit Your Recipe</h1>
+        <form id="recipeForm">
+            <div class="form-group">
+                <label for="recipeName">Recipe Name</label>
+                <input type="text" id="recipeName" name="recipeName" required>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Ingredients</label>
+                <textarea id="ingredients" name="ingredients" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="method">Method of Preparation</label>
+                <textarea id="method" name="method" rows="8" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Recipe</button>
+        </form>
+        <div class="recipe-display" id="recipeDisplay" style="display: none;">
+            <h2>Recipe Name</h2>
+            <p id="displayRecipeName"></p>
+            <h3>Ingredients</h3>
+            <pre id="displayIngredients"></pre>
+            <h3>Method of Preparation</h3>
+            <pre id="displayMethod"></pre>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('recipeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var recipeName = document.getElementById('recipeName').value;
+            var ingredients = document.getElementById('ingredients').value;
+            var method = document.getElementById('method').value;
+
+            document.getElementById('displayRecipeName').innerText = recipeName;
+            document.getElementById('displayIngredients').innerText = ingredients;
+            document.getElementById('displayMethod').innerText = method;
+
+            document.getElementById('recipeDisplay').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
